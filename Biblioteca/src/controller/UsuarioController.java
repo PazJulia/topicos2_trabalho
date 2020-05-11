@@ -13,7 +13,7 @@ import javax.persistence.Query;
 import application.Util;
 import factory.JPAFactory;
 import model.Usuario;
-import org.apache.commons.codec.digest.DigestUtils;
+import repository.UsuarioRepository;
 
 @Named
 @ViewScoped
@@ -28,10 +28,13 @@ public class UsuarioController extends Controller<Usuario> implements Serializab
 	private List<Usuario> listaUsuario;
 
 	public void pesquisar() {
-		EntityManager em = JPAFactory.getEntityManager();
-		Query query = em.createQuery("Select a " + "From Usuario a " + "Where upper(a.nome) like upper(:filtro)");
-		query.setParameter("filtro", "%" + getFiltro() + "%");
-		listaUsuario = query.getResultList();
+//		EntityManager em = JPAFactory.getEntityManager();
+//		Query query = em.createQuery("Select a " + "From Usuario a " + "Where upper(a.nome) like upper(:filtro)");
+//		query.setParameter("filtro", "%" + getFiltro() + "%");
+//		listaUsuario = query.getResultList();
+		
+		UsuarioRepository repo = new UsuarioRepository();
+		listaUsuario = repo.findByNome(getFiltro());
 	}
 
 	public String getFiltro() {

@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import application.Session;
 import application.Util;
 import factory.JPAFactory;
 import model.Usuario;
