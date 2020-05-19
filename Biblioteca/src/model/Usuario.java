@@ -9,6 +9,8 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import model.validation.Validation;
+
 
 @Entity
 public class Usuario extends DefaultEntity<Usuario> {
@@ -70,6 +72,12 @@ public class Usuario extends DefaultEntity<Usuario> {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	@Override
+	public Validation<Usuario> getValidation() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

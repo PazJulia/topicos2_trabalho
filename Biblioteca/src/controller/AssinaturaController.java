@@ -6,12 +6,10 @@ import java.util.List;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
 
-import application.Util;
-import factory.JPAFactory;
+import org.primefaces.event.SelectEvent;
+
+import controller.listing.AssinaturaListing;
 import model.Assinatura;
 import repository.AssinaturaRepository;
 
@@ -21,12 +19,9 @@ public class AssinaturaController extends Controller<Assinatura> implements Seri
 
 	private static final long serialVersionUID = 2102885714371800999L;
 
-	private Assinatura assinatura;
-
 	private String filtro;
-
 	private List<Assinatura> listaAssinatura;
-	
+
 	public void pesquisar() {
 		AssinaturaRepository repo = new AssinaturaRepository();
 		listaAssinatura = repo.findByNome(getFiltro());
@@ -37,6 +32,16 @@ public class AssinaturaController extends Controller<Assinatura> implements Seri
 		if (entity == null)
 			entity = new Assinatura();
 		return entity;
+	}
+
+	public void abrirAssinaturaListing() {
+		AssinaturaListing listing = new AssinaturaListing();
+		listing.open();
+	}
+
+	public void obterAssinaturaListing(SelectEvent event) {
+		Assinatura entity = (Assinatura) event.getObject();
+		setEntity(entity);
 	}
 
 	public String getFiltro() {
@@ -53,20 +58,15 @@ public class AssinaturaController extends Controller<Assinatura> implements Seri
 		return listaAssinatura;
 	}
 
-	@Override
-	public void salvar() {
-		EntityManager em = JPAFactory.getEntityManager();
-		Query query = em.createQuery("Select a From Assinatura a Where a.nome = :nome");
-		query.setParameter("nome", getEntity().getNome());
-		try {
-			assinatura = (Assinatura) query.getSingleResult();
-		} catch (NoResultException e) {
-			assinatura = null;
-		}
-
-		if (assinatura == null)
-			super.salvar();
-		else
-			Util.addMessageError("Já existe uma assinatura com este nome");
-	}
+	/*
+	 * @Override public void salvar() { EntityManager em =
+	 * JPAFactory.getEntityManager(); Query query =
+	 * em.createQuery("Select a From Assinatura a Where a.nome = :nome");
+	 * query.setParameter("nome", getEntity().getNome()); try { assinatura =
+	 * (Assinatura) query.getSingleResult(); } catch (NoResultException e) {
+	 * assinatura = null; }
+	 * 
+	 * if (assinatura == null) super.salvar(); else
+	 * Util.addMessageError("Já existe uma assinatura com este nome"); }
+	 */
 }

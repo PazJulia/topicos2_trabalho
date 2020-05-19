@@ -104,7 +104,7 @@
 					styleClass="ui-confirmdialog-no" />
 			</p:confirmDialog>
 
-			<p:dialog header="Listagem de Professores" widgetVar="listagem"
+			<p:dialog header="Listagem de Usuários" widgetVar="listagem"
 				height="300" width="90%" modal="true" resizable="true">
 				<p:outputLabel value="Nome: " />
 				<p:inputText id="itFiltro" value="#{usuarioController.filtro}" />
@@ -127,11 +127,6 @@
 					<p:column headerText="CPF">
 						<h:outputText value="#{entity.cpf}" />
 					</p:column>
-
-<!-- 					<p:column headerText="Senha">
-						<h:outputText value="#{entity.senha}" />
-					</p:column> -->
-
 
 					<p:column headerText="Data Aniversário">
 						<h:outputText value="#{entity.dataAniversario}" />

@@ -43,7 +43,7 @@
 			<p:panel id="panel">
 				<f:facet name="header">
 					<div align="center">
-						<h1>Cadastro de Assinaturas</h1>
+						<h1>Cadastro de Assinatura</h1>
 					</div>
 				</f:facet>
 				<div class="ui-g ui-fluid">
@@ -51,21 +51,35 @@
 						<div class="card card-w-title">
 							<p:panelGrid columns="1"
 								styleClass="form-group ui-panelgrid-blank" layout="grid">
-								<p:commandLink value="Nome: " onclick="PF('listagem').show();">
-									<p:message for="itNome" escape="false" />
+								<p:commandLink value="Nome: "
+									actionListener="#{assinaturaController.abrirAssinaturaListing}"
+									process="@this" update="@none">
+
+									<p:ajax event="dialogReturn"
+										listener="#{assinaturaController.obterAssinaturaListing}"
+										update="@form" />
+
 								</p:commandLink>
 								<p:inputText id="itNome"
 									value="#{assinaturaController.entity.nome}" required="true"
-									requiredMessage="Informe o nome da assinatura." />
+									requiredMessage="Informe o nome." />
 
-								<p:outputLabel value="Valor" />
-								<p:inputText value="#{assinaturaController.entity.valor}" />
+								<p:outputLabel value="Valor: ">
+									<p:message for="itValor" escape="false" />
+								</p:outputLabel>
+								<p:inputText id="itValor"
+									value="#{assinaturaController.entity.valor}" />
 
-								<p:outputLabel value="Duração:" />
-								<p:password value="#{assinaturaController.entity.duracao}" />
+								<p:outputLabel value="Duração: ">
+									<p:message for="itDuracao" escape="false" />
+								</p:outputLabel>
+								<p:inputText id="itDuracao"
+									value="#{assinaturaController.entity.duracao}" />
 
-								<p:outputLabel value="Quantidade de livros:" />
+								<p:outputLabel value="Limite de Livros:" />
 								<p:inputText value="#{assinaturaController.entity.limiteLivros}" />
+
+
 							</p:panelGrid>
 
 
@@ -101,7 +115,7 @@
 					styleClass="ui-confirmdialog-no" />
 			</p:confirmDialog>
 
-			<p:dialog header="Listagem de Professores" widgetVar="listagem"
+			<p:dialog header="Listagem de Assinaturas" widgetVar="listagem"
 				height="300" width="90%" modal="true" resizable="true">
 				<p:outputLabel value="Nome: " />
 				<p:inputText id="itFiltro" value="#{assinaturaController.filtro}" />
@@ -117,7 +131,7 @@
 
 					<p:column headerText="Nome">
 						<p:commandLink value="#{entity.nome}"
-							actionListener="#{assinaturaController.editar(entity.id)}"
+							actionListener="#{alunoController.editar(entity.id)}"
 							process="@this" update="@form" resetValues="true" />
 					</p:column>
 
@@ -129,7 +143,7 @@
 						<h:outputText value="#{entity.duracao}" />
 					</p:column>
 
-					<p:column headerText="Quantidade de livros">
+					<p:column headerText="Limite de livros">
 						<h:outputText value="#{entity.limiteLivros}" />
 					</p:column>
 				</p:dataTable>

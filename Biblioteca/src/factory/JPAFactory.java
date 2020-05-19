@@ -9,7 +9,7 @@ public class JPAFactory {
 		// garante que a classe não possa ser instanciada
 	}
 
-	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("Professor");
+	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("Biblioteca");
 
 	public static EntityManager getEntityManager() {
 		return emf.createEntityManager();

@@ -3,6 +3,9 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import model.validation.AssinaturaValidation;
+import model.validation.Validation;
+
 @Entity
 public class Assinatura extends DefaultEntity<Assinatura> {
 
@@ -50,6 +53,11 @@ public class Assinatura extends DefaultEntity<Assinatura> {
 
 	public void setLimiteLivros(int limiteLivros) {
 		this.limiteLivros = limiteLivros;
+	}
+
+	@Override
+	public Validation<Assinatura> getValidation() {
+		return new AssinaturaValidation();
 	}
 	
 	

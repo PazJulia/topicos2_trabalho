@@ -5,26 +5,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.EntityManager;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 import org.primefaces.PrimeFaces;
 
-import factory.JPAFactory;
 import model.Usuario;
 import repository.UsuarioRepository;
 
+@Named
+@ViewScoped
 public class UsuarioListing extends Listing<Usuario> {
+
+	public UsuarioListing() {
+		super(Usuario.class);
+		// TODO Auto-generated constructor stub
+	}
 
 	private static final long serialVersionUID = -2632410076988315224L;
 	private List<Usuario> list;
 	private String filtro;
-
-	@Override
-	public Usuario getEntity() {
-		if (entity == null)
-			entity = new Usuario();
-		return entity;
-	}
 
 	public void open() {
 		Map<String, Object> options = new HashMap<String, Object>();
@@ -42,14 +42,6 @@ public class UsuarioListing extends Listing<Usuario> {
 	public void pesquisar() {
 		UsuarioRepository repo = new UsuarioRepository();
 		setList(repo.findByNome(getFiltro()));
-	}
-
-	public void select(int id) {
-		EntityManager em = JPAFactory.getEntityManager();
-		setEntity((Usuario) em.find(Usuario.class, id));
-
-		// retorna o objeto via dialogreturn e finaliza o dialog
-		PrimeFaces.current().dialog().closeDynamic(getEntity());
 	}
 
 	public List<Usuario> getList() {
