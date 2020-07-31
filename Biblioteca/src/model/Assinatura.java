@@ -1,7 +1,11 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import model.validation.AssinaturaValidation;
 import model.validation.Validation;
@@ -13,15 +17,21 @@ public class Assinatura extends DefaultEntity<Assinatura> {
 
 	@Column(nullable = false)
 	private String nome;
-	
+
 	@Column(nullable = false)
 	private double valor;
-	
+
 	@Column(nullable = false)
 	private int duracao;
-	
+
 	@Column(nullable = false)
 	private int limiteLivros;
+
+	/*
+	 * @OneToMany
+	 * 
+	 * @JoinColumn(nullable = false) private List<Livro> livros;
+	 */
 
 	public String getNome() {
 		return nome;
@@ -55,11 +65,18 @@ public class Assinatura extends DefaultEntity<Assinatura> {
 		this.limiteLivros = limiteLivros;
 	}
 
+	/*
+	 * public List<Livro> getLivros() { return livros; }
+	 * 
+	 * public void setLivros(List<Livro> livros) { this.livros = livros; }
+	 */
+
 	@Override
 	public Validation<Assinatura> getValidation() {
-		return new AssinaturaValidation();
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
-	
-	
+
+
+
 }

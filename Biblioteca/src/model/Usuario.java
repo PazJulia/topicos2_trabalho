@@ -2,8 +2,11 @@ package model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -11,11 +14,10 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import model.validation.Validation;
 
-
 @Entity
 public class Usuario extends DefaultEntity<Usuario> {
 
-	private static final long serialVersionUID = 8808841694013495869L;
+	private static final long serialVersionUID = 6888278282813749993L;
 
 	@Column(length = 100, nullable = false)
 	private String nome;
@@ -34,21 +36,9 @@ public class Usuario extends DefaultEntity<Usuario> {
 	@Column(length = 120)
 	private String email;
 
-	public Date getDataAniversario() {
-		return dataAniversario;
-	}
-
-	public void setDataAniversario(Date dataAniversario) {
-		this.dataAniversario = dataAniversario;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idtelefone", unique = true)
+	private Telefone telefone;
 
 	public String getNome() {
 		return nome;
@@ -72,6 +62,30 @@ public class Usuario extends DefaultEntity<Usuario> {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public Date getDataAniversario() {
+		return dataAniversario;
+	}
+
+	public void setDataAniversario(Date dataAniversario) {
+		this.dataAniversario = dataAniversario;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Telefone getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(Telefone telefone) {
+		this.telefone = telefone;
 	}
 
 	@Override

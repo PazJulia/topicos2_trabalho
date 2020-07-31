@@ -51,8 +51,14 @@
 						<div class="card card-w-title">
 							<p:panelGrid columns="1"
 								styleClass="form-group ui-panelgrid-blank" layout="grid">
-								<p:commandLink value="Nome: " onclick="PF('listagem').show();">
-									<p:message for="itNome" escape="false" />
+								<p:commandLink value="Nome: "
+									actionListener="#{usuarioController.abrirUsuarioListing}"
+									process="@this" update="@none">
+
+									<p:ajax event="dialogReturn"
+										listener="#{usuarioController.obterUsuarioListing}"
+										update="@form" />
+
 								</p:commandLink>
 								<p:inputText id="itNome"
 									value="#{usuarioController.entity.nome}" required="true"
@@ -62,13 +68,22 @@
 								<p:inputText value="#{usuarioController.entity.cpf}" />
 
 								<p:outputLabel value="Senha:" />
-								<p:password value="#{usuarioController.entity.senha}"/>
+								<p:password value="#{usuarioController.entity.senha}" />
 								<p:outputLabel value="Data de Aniversário:" />
-								<p:calendar value="#{usuarioController.entity.dataAniversario}"
-									pattern="dd/MM/yyyy" />
+								<p:datePicker
+									value="#{usuarioController.entity.dataAniversario}"
+									pattern="dd/MM/yyyy" showIcon="true" style="width:auto" />
 
 								<p:outputLabel value="E-mail:" />
 								<p:inputText value="#{usuarioController.entity.email}" />
+
+								<p:outputLabel value="Telefone (DDD):" />
+								<p:inputText value="#{usuarioController.entity.telefone.ddd}" />
+
+
+								<p:outputLabel value="Telefone (Número):" />
+								<p:inputText value="#{usuarioController.entity.telefone.numero}" />
+
 							</p:panelGrid>
 
 
@@ -104,7 +119,13 @@
 					styleClass="ui-confirmdialog-no" />
 			</p:confirmDialog>
 
-			<p:dialog header="Listagem de Usuários" widgetVar="listagem"
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+<!-- <p:dialog header="Listagem de Usuários" widgetVar="listagem"
 				height="300" width="90%" modal="true" resizable="true">
 				<p:outputLabel value="Nome: " />
 				<p:inputText id="itFiltro" value="#{usuarioController.filtro}" />
@@ -136,8 +157,4 @@
 						<h:outputText value="#{entity.email}" />
 					</p:column>
 				</p:dataTable>
-			</p:dialog>
-
-		</h:form>
-	</ui:define>
-</ui:composition>
+			</p:dialog> -->

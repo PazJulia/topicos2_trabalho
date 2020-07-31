@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import application.RepositoryException;
 import application.Util;
 import application.ValidationException;
+import application.VersionException;
 import factory.JPAFactory;
 import model.DefaultEntity;
 import repository.Repository;
@@ -24,6 +25,31 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
 
 	public Controller() {
 		super();
+	}
+
+	protected boolean salvarEspecial() {
+		Repository<T> r = new Repository<T>();
+		try {
+			r.beginTransaction();
+			setEntity(r.salvar(getEntity()));
+			r.commitTransaction();
+		} catch (RepositoryException e) {
+			e.printStackTrace();
+			r.rollbackTransaction();
+			Util.addMessageError("Problema ao salvar.");
+			return false;
+		} catch (VersionException e) {
+			e.printStackTrace();
+			r.rollbackTransaction();
+			Util.addMessageError("Problema ao salvar. Por favor, atualize a página e faça o cadastro novamente.");
+			return false;
+		} catch (ValidationException e) {
+			System.out.println(e.getMessage());
+			r.rollbackTransaction();
+			Util.addMessageError(e.getMessage());
+			return false;
+		}
+		return true;
 	}
 
 	public void salvar() {
@@ -60,7 +86,7 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
 			return;
 		}
 		limpar();
-		Util.addMessageInfo("Exclus�o realizada com sucesso.");
+		Util.addMessageInfo("Exclusão realizada com sucesso.");
 	}
 
 	public void editar(int id) {
