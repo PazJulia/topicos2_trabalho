@@ -4,10 +4,15 @@ import java.io.Serializable;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.management.Query;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import org.primefaces.event.SelectEvent;
 
+import application.Util;
 import controller.listing.AssinaturaListing;
+import factory.JPAFactory;
 import model.Assinatura;
 
 @Named
@@ -17,6 +22,7 @@ public class AssinaturaController extends Controller<Assinatura> implements Seri
 	private static final long serialVersionUID = 2102885714371800999L;
 
 	private String filtro;
+//	private Assinatura assinatura;
 
 	public void abrirAssinaturaListing() {
 		AssinaturaListing listing = new AssinaturaListing();
@@ -42,7 +48,7 @@ public class AssinaturaController extends Controller<Assinatura> implements Seri
 
 	public void setFiltro(String filtro) {
 		this.filtro = filtro;
-	}
+	}	 
 
 //	----------------------------------------------------------------
 //	private List<Assinatura> listaAssinatura;
