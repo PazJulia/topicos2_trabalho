@@ -20,8 +20,8 @@ public class Livro extends DefaultEntity<Livro> {
 	@JoinColumn(name = "ideditora", nullable = false)
 	private Editora editora;
 
-	@ManyToMany
-	private List<Autor> listaAutor;
+//	@ManyToMany
+//	private List<Autor> listaAutor;
 
 	@Column(nullable = false)
 	private String isbn;
@@ -119,13 +119,13 @@ public class Livro extends DefaultEntity<Livro> {
 		this.edicao = edicao;
 	}
 
-	public List<Autor> getListaAutor() {
-		return listaAutor;
-	}
-
-	public void setListaAutor(List<Autor> listaAutor) {
-		this.listaAutor = listaAutor;
-	}
+//	public List<Autor> getListaAutor() {
+//		return listaAutor;
+//	}
+//
+//	public void setListaAutor(List<Autor> listaAutor) {
+//		this.listaAutor = listaAutor;
+//	}
 
 	@Override
 	public Validation<Livro> getValidation() {

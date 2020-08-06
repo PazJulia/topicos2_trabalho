@@ -65,7 +65,8 @@
 									requiredMessage="Informe o nome." />
 
 								<p:outputLabel value="CPF:" />
-								<p:inputText value="#{usuarioController.entity.cpf}" />
+								<p:inputMask id="itCpf" value="#{usuarioController.entity.cpf}"
+									mask="999.999.999-99" />
 
 								<p:outputLabel value="Senha:" />
 								<p:password value="#{usuarioController.entity.senha}" />
@@ -78,12 +79,13 @@
 								<p:inputText value="#{usuarioController.entity.email}" />
 
 								<p:outputLabel value="Telefone (DDD):" />
-								<p:inputText value="#{usuarioController.entity.telefone.ddd}" />
-
+								<p:inputMask id="itDdd"
+									value="#{usuarioController.entity.telefone.ddd}" mask="99" />
 
 								<p:outputLabel value="Telefone (Número):" />
-								<p:inputText value="#{usuarioController.entity.telefone.numero}" />
-
+								<p:inputMask id="itNumero"
+									value="#{usuarioController.entity.telefone.numero}"
+									mask="99999-9999" />
 							</p:panelGrid>
 
 
