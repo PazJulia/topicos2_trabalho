@@ -78,6 +78,18 @@
 
 								<p:outputLabel value="Limite de Livros:" />
 								<p:inputText value="#{assinaturaController.entity.limiteLivros}" />
+								
+								<h:outputLabel value="Livros:" />
+								<p:selectCheckboxMenu id="multiple"
+									value="#{assinaturaController.entity.livro}"
+									label="Selecione livros ..." multiple="true"
+									filter="true" filterMatchMode="startsWith"
+									panelStyle="width:auto">
+									<p:ajax event="itemUnselect"
+										listener="#{assinaturaController.onItemUnselect}" />
+									<f:selectItems value="#{assinaturaController.listaLivro}"
+										var="livro" itemLabel="#{livro.nome}" itemValue="#{livro}" />
+								</p:selectCheckboxMenu>
 
 
 							</p:panelGrid>

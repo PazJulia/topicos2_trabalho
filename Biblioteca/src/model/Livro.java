@@ -15,16 +15,15 @@ import model.validation.Validation;
 @Entity
 public class Livro extends DefaultEntity<Livro> {
 
-	private static final long serialVersionUID = 7538289313034895207L;
+	private static final long serialVersionUID = 9147264971483299923L;
 
 	@ManyToOne
 	@JoinColumn(name = "ideditora"/* , nullable = false */)
 	private Editora editora;
 
-    @ManyToMany
-	@JoinTable(name = "livro_autores", joinColumns=
-    {@JoinColumn(name="livro")}, inverseJoinColumns=
-      {@JoinColumn(name="autor")})
+	@ManyToMany
+	@JoinTable(name = "livro_autores", joinColumns = { @JoinColumn(name = "livro") }, inverseJoinColumns = {
+			@JoinColumn(name = "autor") })
 	private List<Autor> autor;
 
 	@Column(nullable = false)
@@ -122,7 +121,6 @@ public class Livro extends DefaultEntity<Livro> {
 	public void setEdicao(String edicao) {
 		this.edicao = edicao;
 	}
-
 
 	public List<Autor> getAutor() {
 		return autor;

@@ -13,9 +13,10 @@
 		<img src="resources/layout/images/uniLibrary.png" />
 		<h:messages style="color:red" />
 
-		<h:inputText value="#{loginController.entity.cpf}">
+		<p:inputMask value="#{loginController.entity.cpf}"
+			mask="999.999.999-99">
 			<f:passThroughAttribute name="placeholder" value="CPF" />
-		</h:inputText>
+		</p:inputMask>
 
 		<h:inputSecret value="#{loginController.entity.senha}">
 			<f:passThroughAttribute name="placeholder" value="Senha" />

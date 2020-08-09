@@ -1,28 +1,29 @@
 package controller;
 
-import java.io.Serializable;
+import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.management.Query;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 
 import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 
-import application.Util;
 import controller.listing.AssinaturaListing;
-import factory.JPAFactory;
 import model.Assinatura;
+import model.Livro;
+import repository.LivroRepository;
 
 @Named
 @ViewScoped
-public class AssinaturaController extends Controller<Assinatura> implements Serializable {
+public class AssinaturaController extends Controller<Assinatura> {
 
-	private static final long serialVersionUID = 2102885714371800999L;
+	private static final long serialVersionUID = 8186658504743489919L;
 
 	private String filtro;
-//	private Assinatura assinatura;
+
+	private List<Livro> listaLivro;
 
 	public void abrirAssinaturaListing() {
 		AssinaturaListing listing = new AssinaturaListing();
@@ -32,6 +33,7 @@ public class AssinaturaController extends Controller<Assinatura> implements Seri
 	public void obterAssinaturaListing(SelectEvent event) {
 		Assinatura entity = (Assinatura) event.getObject();
 		setEntity(entity);
+
 	}
 
 	@Override
@@ -48,57 +50,28 @@ public class AssinaturaController extends Controller<Assinatura> implements Seri
 
 	public void setFiltro(String filtro) {
 		this.filtro = filtro;
-	}	 
+	}
 
-//	----------------------------------------------------------------
-//	private List<Assinatura> listaAssinatura;
-//
-//	public void pesquisar() {
-//		AssinaturaRepository repo = new AssinaturaRepository();
-//		listaAssinatura = repo.findByNome(getFiltro());
-//	}
-//
-//	@Override
-//	public Assinatura getEntity() {
-//		if (entity == null)
-//			entity = new Assinatura();
-//		return entity;
-//	}
-//
-//	public void abrirAssinaturaListing() {
-//		AssinaturaListing listing = new AssinaturaListing();
-//		listing.open();
-//	}
-//
-//	public void obterAssinaturaListing(SelectEvent event) {
-//		Assinatura entity = (Assinatura) event.getObject();
-//		setEntity(entity);
-//	}
-//
-//	public String getFiltro() {
-//		return filtro;
-//	}
-//
-//	public void setFiltro(String filtro) {
-//		this.filtro = filtro;
-//	}
-//
-//	public List<Assinatura> getListaAssinatura() {
-//		if (listaAssinatura == null)
-//			listaAssinatura = new ArrayList<Assinatura>();
-//		return listaAssinatura;
-//	}
-//
-//	/*
-//	 * @Override public void salvar() { EntityManager em =
-//	 * JPAFactory.getEntityManager(); Query query =
-//	 * em.createQuery("Select a From Assinatura a Where a.nome = :nome");
-//	 * query.setParameter("nome", getEntity().getNome()); try { assinatura =
-//	 * (Assinatura) query.getSingleResult(); } catch (NoResultException e) {
-//	 * assinatura = null; }
-//	 * 
-//	 * if (assinatura == null) super.salvar(); else
-//	 * Util.addMessageError("Já existe uma assinatura com este nome"); }
-//	 */
+	public void setListaEditora(List<Livro> listaLivro) {
+		this.listaLivro = listaLivro;
+	}
+
+	public List<Livro> getListaLivro() {
+		if (listaLivro == null) {
+			LivroRepository repo = new LivroRepository();
+			listaLivro = repo.findByNome("");
+		}
+		return listaLivro;
+	}
+
+	public void onItemUnselect(UnselectEvent event) {
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		FacesMessage msg = new FacesMessage();
+		msg.setSummary("Item unselected: " + event.getObject().toString());
+		msg.setSeverity(FacesMessage.SEVERITY_INFO);
+
+		context.addMessage(null, msg);
+	}
 
 }
