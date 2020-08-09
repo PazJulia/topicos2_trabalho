@@ -16,7 +16,7 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
 
 	private static final long serialVersionUID = -8001629045854908916L;
 	protected T entity;
-
+	
 	public abstract T getEntity();
 
 	public void setEntity(T entity) {
@@ -26,13 +26,13 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
 	public Controller() {
 		super();
 	}
-
+	
 	protected boolean salvarEspecial() {
 		Repository<T> r = new Repository<T>();
 		try {
 			r.beginTransaction();
 			setEntity(r.salvar(getEntity()));
-			r.commitTransaction();
+			r.commitTransaction();	
 		} catch (RepositoryException e) {
 			e.printStackTrace();
 			r.rollbackTransaction();
@@ -53,24 +53,10 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
 	}
 
 	public void salvar() {
-		Repository<T> r = new Repository<T>();
-		try {
-			r.beginTransaction();
-			r.salvar(getEntity());
-			r.commitTransaction();
-		} catch (RepositoryException e) {
-			e.printStackTrace();
-			r.rollbackTransaction();
-			Util.addMessageError("Problema ao salvar.");
-			return;
-		} catch (ValidationException e) {
-			System.out.println(e.getMessage());
-			r.rollbackTransaction();
-			Util.addMessageError(e.getMessage());
-			return;
+		if (salvarEspecial()) {
+			limpar();
+			Util.addMessageInfo("Cadastro realizado com sucesso.");
 		}
-		limpar();
-		Util.addMessageInfo("Cadastro realizado com sucesso.");
 	}
 
 	public void excluir() {
@@ -78,7 +64,7 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
 		try {
 			r.beginTransaction();
 			r.excluir(getEntity());
-			r.commitTransaction();
+			r.commitTransaction();	
 		} catch (RepositoryException e) {
 			e.printStackTrace();
 			r.rollbackTransaction();
@@ -86,14 +72,14 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
 			return;
 		}
 		limpar();
-		Util.addMessageInfo("Exclusão realizada com sucesso.");
+		Util.addMessageInfo("Exclusão realizada com sucesso.");	
 	}
-
+	
 	public void editar(int id) {
 		EntityManager em = JPAFactory.getEntityManager();
 		setEntity((T) em.find(getEntity().getClass(), id));
 	}
-
+	
 	public void limpar() {
 		entity = null;
 	}

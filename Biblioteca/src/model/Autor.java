@@ -13,7 +13,7 @@ public class Autor extends DefaultEntity<Autor> {
 	@Column(nullable = false)
 	private String nome;
 
-	@Column(nullable = false)
+	@Column(nullable = false, length = 1024)
 	private String biografia;
 
 	public String getNome() {

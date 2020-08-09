@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -17,11 +18,14 @@ public class Livro extends DefaultEntity<Livro> {
 	private static final long serialVersionUID = 7538289313034895207L;
 
 	@ManyToOne
-	@JoinColumn(name = "ideditora", nullable = false)
+	@JoinColumn(name = "ideditora"/* , nullable = false */)
 	private Editora editora;
 
-//	@ManyToMany
-//	private List<Autor> listaAutor;
+    @ManyToMany
+	@JoinTable(name = "livro_autores", joinColumns=
+    {@JoinColumn(name="livro")}, inverseJoinColumns=
+      {@JoinColumn(name="autor")})
+	private List<Autor> autor;
 
 	@Column(nullable = false)
 	private String isbn;
@@ -119,13 +123,14 @@ public class Livro extends DefaultEntity<Livro> {
 		this.edicao = edicao;
 	}
 
-//	public List<Autor> getListaAutor() {
-//		return listaAutor;
-//	}
-//
-//	public void setListaAutor(List<Autor> listaAutor) {
-//		this.listaAutor = listaAutor;
-//	}
+
+	public List<Autor> getAutor() {
+		return autor;
+	}
+
+	public void setAutor(List<Autor> autor) {
+		this.autor = autor;
+	}
 
 	@Override
 	public Validation<Livro> getValidation() {

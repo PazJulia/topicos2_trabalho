@@ -94,6 +94,18 @@
 								<p:outputLabel value="Edição:" />
 								<p:inputText value="#{livroController.entity.edicao}" />
 
+								<h:outputLabel value="Autores:" />
+								<p:selectCheckboxMenu id="multiple"
+									value="#{livroController.entity.autor}"
+									label="Selecione um ou mais autores ..." multiple="true"
+									filter="true" filterMatchMode="startsWith"
+									panelStyle="width:auto">
+									<p:ajax event="itemUnselect"
+										listener="#{livroController.onItemUnselect}" />
+									<f:selectItems value="#{livroController.listaAutor}"
+										var="autor" itemLabel="#{autor.nome}" itemValue="#{autor}" />
+								</p:selectCheckboxMenu>
+
 
 
 							</p:panelGrid>
