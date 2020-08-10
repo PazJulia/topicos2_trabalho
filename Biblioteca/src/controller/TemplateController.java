@@ -7,7 +7,7 @@ import javax.inject.Named;
 
 import application.Session;
 import application.Util;
-import model.Usuario;
+import model.Funcionario;
 
 @Named
 @ViewScoped
@@ -15,15 +15,18 @@ public class TemplateController implements Serializable {
 
 	private static final long serialVersionUID = -1457991834290264968L;
 
-	Usuario usuarioLogado = null;
+	private Funcionario usuarioLogado = null;
 
-	public TemplateController() {
-		usuarioLogado = (Usuario) Session.getInstance().getAttribute("usuarioLogado");
+	public Funcionario getUsuarioLogado() {
+		if (usuarioLogado == null) // buscando o usuario da sessao
+			usuarioLogado = (Funcionario) Session.getInstance().getAttribute("usuarioLogado");
+		return usuarioLogado;
 	}
 
-	public void encerrarSessao() {
+	public String encerrarSessao() {
+		// encerrando a sessao
 		Session.getInstance().invalidateSession();
-		Util.redirect("/Biblioteca/faces/login.xhtml");
+		return "loginfuncionario.xhtml?faces-redirect=true";
 	}
 
 	public void redirecionar(String pagina) {
@@ -36,11 +39,4 @@ public class TemplateController implements Serializable {
 	 * false; }
 	 */
 
-	public Usuario getUsuarioLogado() {
-		return usuarioLogado;
-	}
-
-	public void setUsuarioLogado(Usuario usuarioLogado) {
-		this.usuarioLogado = usuarioLogado;
-	}
 }

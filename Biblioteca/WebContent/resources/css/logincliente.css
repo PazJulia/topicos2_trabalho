@@ -2,14 +2,29 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-	background: #FFDF85;
+	background: #EFEFEF;
+	font-size: 15px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.ui-widget {
+	padding-left: 22px;
+	color: #515151;
+	font-weight: bold;
+}
+
+label {
+	padding-left: 22px;
+	color: #515151;
 }
 
 .box {
-	box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px
-		rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px
-		17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0
-		100px 80px rgba(0, 0, 0, 0.12);
 	width: 400px;
 	padding: 40px;
 	position: absolute;
@@ -17,33 +32,34 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background: white;
-	text-align: center;
+	text-align: left;
 }
 
 .box input[type="text"], .box input[type="password"] {
 	border: 0;
-	background: #ECECEC;
+	background: #FFECF2;
+	border: 2px solid #F50E4F;
 	display: block;
 	margin: 20px auto;
 	text-align: left;
-	/* border: 2px solid #3498db; */
 	padding: 14px 20px;
 	width: 280px;
-	border-radius: 24px;
+	border-radius: 14px;
 	outline: none;
 	color: #6A6A6A;
 	/* transition: 0.25s; */
 }
 
 .box input[type="submit"] {
-	font-weight: bold; border : 0;
+	font-weight: bold;
+	border: 0;
 	background: #F50E4F;
 	display: block;
 	margin: 20px auto;
 	text-align: center;
 	padding: 14px 40px;
 	width: 280px;
-	border-radius: 24px;
+	border-radius: 14px;
 	outline: none;
 	color: white;
 	cursor: pointer;

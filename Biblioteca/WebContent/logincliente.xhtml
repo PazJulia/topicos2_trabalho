@@ -6,11 +6,11 @@
 <h:head>
 	<meta charset="utf-8" />
 	<title>Login</title>
-	<h:outputStylesheet library="css" name="login.css" />
+	<h:outputStylesheet library="css" name="logincliente.css" />
 </h:head>
 <h:body>
 	<h:form class="box">
-		<img src="resources/layout/images/uniLibrary.png" />
+		<img src="resources/layout/images/uniLibrary.png" class="center"/>
 		<h:messages style="color:red" />
 
 		<p:inputMask value="#{loginController.entity.cpf}"
@@ -21,6 +21,17 @@
 		<h:inputSecret value="#{loginController.entity.senha}">
 			<f:passThroughAttribute name="placeholder" value="Senha" />
 		</h:inputSecret>
+
+		<h:outputLabel value="Novo por aqui?" style="size: 20px;"/>
+		<br />
+		<p:commandLink value="Cadastre-se "
+			actionListener="#{livroController.abrirLivroListing}" process="@this"
+			update="@none" style="text-decoration: underline;">
+
+			<p:ajax event="dialogReturn"
+				listener="#{livroController.obterLivroListing}" update="@form" />
+
+		</p:commandLink>
 
 		<h:commandButton value="Login" action="#{loginController.entrar}" />
 	</h:form>

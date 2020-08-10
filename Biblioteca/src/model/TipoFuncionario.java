@@ -5,7 +5,7 @@ import java.util.List;
 
 public enum TipoFuncionario {
 
-	ADMINISTRADOR(0, "Adminstrador"), FUNCIONARIO(1, "Gerente"), OPERACIONAL(2, "Operacional");
+	ADMINISTRADOR(0, "Adminstrador"), GENRENTE(1, "Gerente"), OPERACIONAL(2, "Operacional");
 
 	private int id;
 	private String label;
@@ -14,22 +14,28 @@ public enum TipoFuncionario {
 	private TipoFuncionario(int id, String label) {
 		this.id = id;
 		this.label = label;
+
 		paginasAcesso = new ArrayList<String>();
-		if (id == 0) {
-			paginasAcesso.add("aluno.xhtml");
-			paginasAcesso.add("alunolisting.xhtml");
-			paginasAcesso.add("professor.xhtml");
-			paginasAcesso.add("professorlisting.xhtml");
-			paginasAcesso.add("professorlistingsql.xhtml");
-			paginasAcesso.add("estado.xhtml");
-			paginasAcesso.add("estadolisting.xhtml");
-			paginasAcesso.add("cidade.xhtml");
-			paginasAcesso.add("cidadelisting.xhtml");
-			paginasAcesso.add("img-professor");
+		if (id == 0 || id == 1) {
+			paginasAcesso.add("assinatura.xhtml");
+			paginasAcesso.add("assinaturalisting.xhtml");
+			paginasAcesso.add("autor.xhtml");
+			paginasAcesso.add("autorlisting.xhtml");
+			paginasAcesso.add("editora.xhtml");
+			paginasAcesso.add("editoralisting.xhtml");
+			paginasAcesso.add("funcionario.xhtml");
+			paginasAcesso.add("funcionariolisting.xhtml");
+			paginasAcesso.add("livro.xhtml");
+			paginasAcesso.add("livrolisting.xhtml");		
+			
 		} else {
-			paginasAcesso.add("aluno.xhtml");
-			paginasAcesso.add("estado.xhtml");
-			paginasAcesso.add("cidade.xhtml");
+			paginasAcesso.add("autor.xhtml");
+			paginasAcesso.add("autorlisting.xhtml");
+			paginasAcesso.add("editora.xhtml");
+			paginasAcesso.add("editoralisting.xhtml");
+			paginasAcesso.add("livro.xhtml");
+			paginasAcesso.add("livrolisting.xhtml");	
+			paginasAcesso.add("acessonegado.xhtml");
 		}
 
 	}
@@ -47,9 +53,9 @@ public enum TipoFuncionario {
 	}
 
 	public static TipoFuncionario valueOf(int valor) {
-		for (TipoFuncionario tipoUsuario : TipoFuncionario.values()) {
-			if (valor == tipoUsuario.getId())
-				return tipoUsuario;
+		for (TipoFuncionario tipoFuncionario : TipoFuncionario.values()) {
+			if (valor == tipoFuncionario.getId())
+				return tipoFuncionario;
 		}
 		return null;
 	}

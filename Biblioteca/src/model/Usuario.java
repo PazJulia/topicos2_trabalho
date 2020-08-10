@@ -4,8 +4,8 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import model.validation.Validation;
 
-@Entity
+@MappedSuperclass
 public class Usuario extends DefaultEntity<Usuario> {
 
 	private static final long serialVersionUID = 6888278282813749993L;

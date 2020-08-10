@@ -1,20 +1,23 @@
 package model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
 public class Cliente extends Usuario {
 
-	private static final long serialVersionUID = -3716503653339551014L;
+	private static final long serialVersionUID = 7134203118169711072L;
 
-	private int cartao;
+	@Column
+	private String nomePortador;
 
-	public int getCartao() {
-		return cartao;
-	}
+	@Column
+	private int numero;
 
-	public void setCartao(int cartao) {
-		this.cartao = cartao;
-	}
+	@Column
+	private String dataValidade;
+
+	@Column
+	private String codigoSeguranca;
 
 }
