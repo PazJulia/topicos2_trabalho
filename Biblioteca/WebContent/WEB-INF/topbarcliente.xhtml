@@ -4,6 +4,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
+	<p:ajaxStatus onstart="PF('statusDialog').show()"
+		onsuccess="PF('statusDialog').hide()" />
+
+	<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+		closable="false" resizable="false" showHeader="false">
+		<p:graphicImage name="/images/loader.gif" />
+	</p:dialog>
+
 	<div
 		style="height: 60px; display: block; background: white; position: relative;">
 
@@ -11,8 +19,8 @@
 		<p:graphicImage name="layout/images/uniLibrary.png"
 			style="left: 32px; position: absolute; top: 50%; transform: translate(0%, -50%);" />
 
-		<p:commandLink value="Entre ou cadastre-se"
-			style="color: #515151; right: 80px; position: absolute; top: 50%; transform: translate(-20%, -50%);" />
+		<h:link value="Entre ou cadastre-se" outcome="/logincliente"
+			style="color: #515151; right: 80px; position: absolute; top: 50%; transform: translate(-20%, -50%); font-weight: normal; text-decoration: none;" />
 
 		<p:commandButton icon="fa fa-fw fa-shopping-cart" value="0"
 			style="right: 32px; position: absolute; top: 50%; transform: translate(0%, -50%);"></p:commandButton>
@@ -24,7 +32,7 @@
 
 
 		<p:inputText placeholder="Pesquise um livro ..."
-			style="width: 300px; position: relative; top: 50%; transform: translate(0%, -50%); border-top-left-radius: 10px; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 10px; border: none;" />
+			style="width: 350px; position: relative; top: 50%; transform: translate(0%, -50%); border-top-left-radius: 10px; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 10px; border: none;" />
 		<p:commandButton icon="fa fa-fw fa-search"
 			style="position: relative; top: 50%; transform: translate(0%, -50%); border-top-left-radius: 0; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 0; border: none;" />
 		<p:commandLink value="Início"

@@ -13,9 +13,12 @@
 
 			<!-- <h:link styleClass="topbar-link" outcome="/documentation">Sair</h:link> -->
 			
-			<h:commandLink value="Sair"
-					action="#{templateController.encerrarSessao}" />
-				<br />
+			<p:commandLink
+    			value="Olá #{templateController.usuarioLogado.nome} (Sair)" 
+    			rendered="#{templateController.usuarioLogado != null}"
+    			styleClass="topbar-link" 
+    			process="@this"
+    			actionListener="#{templateController.encerrarSessao}"/>
 		</div>
 	</div>
 

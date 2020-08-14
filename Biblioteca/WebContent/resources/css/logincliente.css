@@ -4,6 +4,12 @@ body {
 	font-family: sans-serif;
 	background: #EFEFEF;
 	font-size: 15px;
+	padding-left: 22px;
+}
+
+body a {
+	color: #515151;
+	padding-left: 22px;
 }
 
 .center {
