@@ -5,24 +5,29 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta charset="utf-8" />
-	<title>Login</title>
+	<title>Login Administrativo</title>
 	<h:outputStylesheet library="css" name="loginfuncionario.css" />
 </h:head>
 <h:body>
 	<h:form class="box">
-		<img src="resources/layout/images/uniLibrary.png" class="center"/>
-		<h:messages style="color:red" />
+		<img src="resources/layout/images/uniLibrary.png" class="center" />
+		<h:messages style="color:grey" />
 
-		<p:inputMask value="#{loginFuncionarioController.entity.cpf}"
+		<p:inputMask value="#{loginFuncionarioController.funcionario.cpf}"
 			mask="999.999.999-99">
 			<f:passThroughAttribute name="placeholder" value="CPF" />
 		</p:inputMask>
 
-		<h:inputSecret value="#{loginFuncionarioController.entity.senha}">
+		<h:inputSecret value="#{loginFuncionarioController.funcionario.senha}">
 			<f:passThroughAttribute name="placeholder" value="Senha" />
 		</h:inputSecret>
 
-		<h:commandButton value="Login" action="#{loginFuncionarioController.entrar}" />
+		<h:commandButton value="Login"
+			action="#{loginFuncionarioController.entrar}" />
 	</h:form>
+	<h:outputStylesheet library="webjars"
+		name="font-awesome/5.12.0/css/all.min-jsf.css" />
+	<h:outputStylesheet library="webjars"
+		name="font-awesome/5.12.0/css/v4-shims.min-jsf.css" />
 </h:body>
 </html>

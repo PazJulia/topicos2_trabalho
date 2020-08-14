@@ -17,25 +17,24 @@ public enum TipoFuncionario {
 
 		paginasAcesso = new ArrayList<String>();
 		if (id == 0 || id == 1) {
-			paginasAcesso.add("assinatura.xhtml");
-			paginasAcesso.add("assinaturalisting.xhtml");
-			paginasAcesso.add("autor.xhtml");
-			paginasAcesso.add("autorlisting.xhtml");
-			paginasAcesso.add("editora.xhtml");
-			paginasAcesso.add("editoralisting.xhtml");
-			paginasAcesso.add("funcionario.xhtml");
-			paginasAcesso.add("funcionariolisting.xhtml");
-			paginasAcesso.add("livro.xhtml");
-			paginasAcesso.add("livrolisting.xhtml");		
-			
+			paginasAcesso.add("pages/assinatura.xhtml");
+			paginasAcesso.add("pages/assinaturalisting.xhtml");
+			paginasAcesso.add("pages/autor.xhtml");
+			paginasAcesso.add("pages/autorlisting.xhtml");
+			paginasAcesso.add("pages/editora.xhtml");
+			paginasAcesso.add("pages/editoralisting.xhtml");
+			paginasAcesso.add("pages/funcionario.xhtml");
+			paginasAcesso.add("pages/funcionariolisting.xhtml");
+			paginasAcesso.add("pages/livro.xhtml");
+			paginasAcesso.add("pages/livrolisting.xhtml");
+
 		} else {
-			paginasAcesso.add("autor.xhtml");
-			paginasAcesso.add("autorlisting.xhtml");
-			paginasAcesso.add("editora.xhtml");
-			paginasAcesso.add("editoralisting.xhtml");
-			paginasAcesso.add("livro.xhtml");
-			paginasAcesso.add("livrolisting.xhtml");	
-			paginasAcesso.add("acessonegado.xhtml");
+			paginasAcesso.add("pages/autor.xhtml");
+			paginasAcesso.add("pages/autorlisting.xhtml");
+			paginasAcesso.add("pages/editora.xhtml");
+			paginasAcesso.add("pages/editoralisting.xhtml");
+			paginasAcesso.add("pages/livro.xhtml");
+			paginasAcesso.add("pages/livrolisting.xhtml");
 		}
 
 	}
@@ -52,7 +51,7 @@ public enum TipoFuncionario {
 		return label;
 	}
 
-	public static TipoFuncionario valueOf(int valor) {
+	public static TipoFuncionario valueOf(Integer valor) {
 		for (TipoFuncionario tipoFuncionario : TipoFuncionario.values()) {
 			if (valor == tipoFuncionario.getId())
 				return tipoFuncionario;

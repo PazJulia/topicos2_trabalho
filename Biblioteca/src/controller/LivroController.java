@@ -16,7 +16,6 @@ import model.Editora;
 import model.Livro;
 import repository.AutorRepository;
 import repository.EditoraRepository;
-import repository.LivroRepository;
 
 @Named
 @ViewScoped

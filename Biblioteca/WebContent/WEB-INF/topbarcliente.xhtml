@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div
+		style="height: 60px; display: block; background: white; position: relative;">
+
+
+		<p:graphicImage name="layout/images/uniLibrary.png"
+			style="left: 32px; position: absolute; top: 50%; transform: translate(0%, -50%);" />
+
+		<p:commandLink value="Entre ou cadastre-se"
+			style="color: #515151; right: 80px; position: absolute; top: 50%; transform: translate(-20%, -50%);" />
+
+		<p:commandButton icon="fa fa-fw fa-shopping-cart" value="0"
+			style="right: 32px; position: absolute; top: 50%; transform: translate(0%, -50%);"></p:commandButton>
+
+
+	</div>
+	<div
+		style="width: 100%; height: 50px; background: #FFDF85; position: relative; display: block; padding-left: 32px; padding-right: 32px;">
+
+
+		<p:inputText placeholder="Pesquise um livro ..."
+			style="width: 300px; position: relative; top: 50%; transform: translate(0%, -50%); border-top-left-radius: 10px; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 10px; border: none;" />
+		<p:commandButton icon="fa fa-fw fa-search"
+			style="position: relative; top: 50%; transform: translate(0%, -50%); border-top-left-radius: 0; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 0; border: none;" />
+		<p:commandLink value="Início"
+			style="color: #515151; right: 160px; position: absolute; top: 50%; transform: translate(0%, -50%);" />
+		<p:commandLink value="Assinaturas"
+			style="color: #515151; right: 0; position: absolute; top: 50%; transform: translate(-50%, -50%);" />
+
+	</div>
+</ui:composition>

@@ -13,10 +13,10 @@ import org.primefaces.event.SelectEvent;
 import application.Util;
 import controller.listing.FuncionarioListing;
 import factory.JPAFactory;
+import model.Funcionario;
 import model.Telefone;
 import model.TipoFuncionario;
 import model.Usuario;
-import model.Funcionario;
 
 @Named
 @ViewScoped

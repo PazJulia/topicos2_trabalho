@@ -94,10 +94,10 @@ body.layout-scroll-block {
 }
 .layout-wrapper .layout-sidebar .layout-menu li a.active {
   background-color: #252a2e;
-  border-left-color: #007ad9;
+  border-left-color: #F50E4F;
 }
 .layout-wrapper .layout-sidebar .layout-menu li a.active i {
-  color: #007ad9;
+  color: #F50E4F;
 }
 .layout-wrapper .layout-content {
   margin-left: 250px;

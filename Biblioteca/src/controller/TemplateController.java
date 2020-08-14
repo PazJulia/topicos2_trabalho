@@ -13,8 +13,7 @@ import model.Funcionario;
 @ViewScoped
 public class TemplateController implements Serializable {
 
-	private static final long serialVersionUID = -1457991834290264968L;
-
+	private static final long serialVersionUID = -2759978810312866073L;
 	private Funcionario usuarioLogado = null;
 
 	public Funcionario getUsuarioLogado() {
@@ -23,20 +22,11 @@ public class TemplateController implements Serializable {
 		return usuarioLogado;
 	}
 
-	public String encerrarSessao() {
+	public void encerrarSessao() {
 		// encerrando a sessao
 		Session.getInstance().invalidateSession();
-		return "loginfuncionario.xhtml?faces-redirect=true";
+		Util.redirect("/faces/loginfuncionario.xhtml");
+		// return "login.xhtml?faces-redirect=true";
 	}
-
-	public void redirecionar(String pagina) {
-		Util.redirect(pagina);
-	}
-
-	/*
-	 * public boolean bloquearAcesso(int perfil) {
-	 * if(usuarioLogado.getPerfil().getValue() > perfil) return true; else return
-	 * false; }
-	 */
 
 }

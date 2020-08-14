@@ -26,5 +26,4 @@ public class EditoraConverter implements Converter<Editora>{
 		
 		return value.getId().toString();
 	}
-
 }

@@ -132,38 +132,3 @@
 		</h:form>
 	</ui:define>
 </ui:composition>
-
-
-			<!-- <p:dialog header="Listagem de Assinaturas" widgetVar="listagem"
-				height="300" width="90%" modal="true" resizable="true">
-				<p:outputLabel value="Nome: " />
-				<p:inputText id="itFiltro" value="#{assinaturaController.filtro}" />
-				<p:commandButton value="Pesquisar"
-					actionListener="#{assinaturaController.pesquisar}"
-					process="@this itFiltro" update="dtListagem" />
-				<br />
-				<p:dataTable id="dtListagem" var="entity"
-					value="#{assinaturaController.listaAssinatura}">
-					<p:column headerText="Id">
-						<h:outputText value="#{entity.id}" />
-					</p:column>
-
-					<p:column headerText="Nome">
-						<p:commandLink value="#{entity.nome}"
-							actionListener="#{alunoController.editar(entity.id)}"
-							process="@this" update="@form" resetValues="true" />
-					</p:column>
-
-					<p:column headerText="Valor">
-						<h:outputText value="#{entity.valor}" />
-					</p:column>
-
-					<p:column headerText="Duração">
-						<h:outputText value="#{entity.duracao}" />
-					</p:column>
-
-					<p:column headerText="Limite de livros">
-						<h:outputText value="#{entity.limiteLivros}" />
-					</p:column>
-				</p:dataTable>
-			</p:dialog> -->

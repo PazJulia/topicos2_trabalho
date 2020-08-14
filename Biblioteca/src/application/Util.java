@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
 
@@ -38,15 +39,6 @@ public class Util {
 				new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
 	}
 	
-	public static void redirect(String url) {
-		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect(url);
-		} catch (IOException e) {
-			addMessageError("Erro ao redirecionar a página.");
-			e.printStackTrace();
-		}
-	}
-	
 	public static boolean saveImageProfessor(InputStream inputStream, String imageType, int idProfessor) {
 		// Exemplo da maquina do janio: /home/janio/images/professor
 		String diretorio = System.getProperty("user.home") + PATH_IMAGES_PROFESSOR;
@@ -75,6 +67,19 @@ public class Util {
 		}
 		
 		return true;
+	}
+	
+	public static void redirect(String page) {
+		ExternalContext external = FacesContext.getCurrentInstance()
+		        .getExternalContext();
+		try {
+			// external.getRequesContextPath() = http://localhost:8080/Academico
+		    external.redirect(external.getRequestContextPath()
+		            + page);
+		} catch (IOException e) {
+		    // TODO Auto-generated catch block
+		    e.printStackTrace();
+		}
 	}
 	
 }
