@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 import model.validation.Validation;
 
@@ -32,19 +33,19 @@ public class Livro extends DefaultEntity<Livro> {
 	@Column(length = 100, nullable = false)
 	private String nome;
 
-	@Column
+	@Column(length = 1024)
 	private String descricao;
 
 	@Column(nullable = false)
 	private Double preco;
 
-	@Column(nullable = false)
+	@Column()
 	private Date dataLancamento;
 
 	@Column(nullable = false)
 	private String genero;
 
-	@Column(nullable = false)
+	@Column(nullable = false, length = 2)
 	private int classificacaoIndicativa;
 
 	@Column(nullable = false)

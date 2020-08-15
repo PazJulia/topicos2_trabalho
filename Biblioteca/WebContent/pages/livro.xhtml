@@ -66,14 +66,16 @@
 								<p:inputText value="#{livroController.entity.isbn}" />
 
 								<p:outputLabel value="Descrição:" />
-								<p:inputText value="#{livroController.entity.descricao}" />
+								<p:inputTextarea value="#{livroController.entity.descricao}"
+									maxlength="1024" />
 
 								<p:outputLabel value="Preço:" />
-								<p:inputText value="#{livroController.entity.preco}" />
+								<p:inputText value="#{livroController.entity.preco}" type="number" required="true" requiredMessage="Informe o preço"/>
 
 								<p:outputLabel value="Data de lançamento:" />
 								<p:datePicker value="#{livroController.entity.dataLancamento}"
-									pattern="dd/MM/yyyy" showIcon="true" style="width:auto" />
+									pattern="dd/MM/yyyy" showIcon="true" style="width:auto"
+									required="true" requiredMessage="Informe a data" />
 
 								<p:outputLabel value="Gênero:" />
 								<p:inputText value="#{livroController.entity.genero}" />
@@ -148,14 +150,3 @@
 		</h:form>
 	</ui:define>
 </ui:composition>
-
-<!-- <h:outputLabel for="multiple" value="Multiple:" />
-								<p:selectCheckboxMenu id="multiple"
-									value="#{checkboxView.selectedCities2}"
-									label="Selecione um ou mais autores" multiple="true"
-									filter="true" filterMatchMode="startsWith"
-									panelStyle="width:250px">
-									<p:ajax event="itemUnselect"
-										listener="#{checkboxView.onItemUnselect}" />
-									<f:selectItems value="#{checkboxView.cities}" />
-								</p:selectCheckboxMenu> -->

@@ -16,6 +16,7 @@ import model.Editora;
 import model.Livro;
 import repository.AutorRepository;
 import repository.EditoraRepository;
+import repository.LivroRepository;
 
 @Named
 @ViewScoped
@@ -25,7 +26,7 @@ public class LivroController extends Controller<Livro> {
 
 	private String filtro;
 	private List<Editora> listaEditora;
-	
+
 	private List<Autor> listaAutor;
 	/*
 	 * private InputStream fotoInputStream = null; private String nomeFoto = null;
@@ -50,8 +51,6 @@ public class LivroController extends Controller<Livro> {
 	 * "Selecione uma foto ..."; return "Arquivo: " + nomeFoto +
 	 * " (Clique para alterar a foto...)"; }
 	 */
-
-
 
 	/*
 	 * @Override public void salvar() { if (getEntity().getEditora() != null &&
@@ -101,7 +100,7 @@ public class LivroController extends Controller<Livro> {
 	public void setListaEditora(List<Autor> listaAutor) {
 		this.listaAutor = listaAutor;
 	}
-	
+
 	public List<Autor> getListaAutor() {
 		if (listaAutor == null) {
 			AutorRepository repo = new AutorRepository();
@@ -117,15 +116,15 @@ public class LivroController extends Controller<Livro> {
 	public void atualizarEditora() {
 		listaEditora = null;
 	}
-	
-    public void onItemUnselect(UnselectEvent event) {
-        FacesContext context = FacesContext.getCurrentInstance();
-         
+
+	public void onItemUnselect(UnselectEvent event) {
+		FacesContext context = FacesContext.getCurrentInstance();
+
 		FacesMessage msg = new FacesMessage();
-        msg.setSummary("Item unselected: " + event.getObject().toString());
-        msg.setSeverity(FacesMessage.SEVERITY_INFO);
-         
-        context.addMessage(null, msg);
-    }
+		msg.setSummary("Item unselected: " + event.getObject().toString());
+		msg.setSeverity(FacesMessage.SEVERITY_INFO);
+
+		context.addMessage(null, msg);
+	}
 
 }

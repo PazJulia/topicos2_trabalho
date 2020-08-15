@@ -43,6 +43,14 @@ public class LivroListing extends Listing<Livro> {
 		setList(repo.findByNome(getFiltro()));
 	}
 
+//	public List<Livro> getList(int num) {
+//		if (list == null) {
+//			LivroRepository repo = new LivroRepository();
+//			list = repo.findLastResults(num);
+//		}
+//		return list;
+//	}
+
 	public List<Livro> getList() {
 		if (list == null)
 			list = new ArrayList<Livro>();

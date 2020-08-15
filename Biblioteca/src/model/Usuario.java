@@ -9,6 +9,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
 
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -33,6 +34,7 @@ public class Usuario extends DefaultEntity<Usuario> {
 	@Temporal(TemporalType.DATE)
 	private Date dataAniversario;
 
+	@Email(message = "Email inválido")
 	@Column(length = 120)
 	private String email;
 

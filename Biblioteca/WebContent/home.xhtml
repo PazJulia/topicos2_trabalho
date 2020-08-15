@@ -47,17 +47,17 @@
 						<h1>Teste</h1>
 
 						<h1>Carousel</h1>
-						<p:carousel value="#{livroListing.list}" headerText="List of Cars"
-							var="car" itemStyle="text-align:center;padding: 14px"
-							responsive="true">
+						<p:carousel value="#{homeController.listaLivro}"
+							headerText="Lista de livros" var="entity"
+							itemStyle="text-align:center; padding: 14px;" responsive="true">
 							<p:outputPanel style="text-align:center">
-								<p:graphicImage name="images/uniLibrary.png" />
+								<p:graphicImage name="layout/images/uniLibrary.png" />
 							</p:outputPanel>
 
 							<p:panelGrid columns="2" style="width:100%"
 								styleClass="ui-panelgrid-blank ui-car-display">
 								<h:outputText value="Título: #{entity.nome}" />
-								<h:outputText value="Por: #{livroController.listaAutor}" />
+								<h:outputText value="Preço: #{entity.preco}" />
 
 							</p:panelGrid>
 
@@ -67,7 +67,7 @@
 						</p:carousel>
 					</div>
 				</f:facet>
-				
+
 			</p:panel>
 
 			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
