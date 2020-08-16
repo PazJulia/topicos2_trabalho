@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" lang="en">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<h:outputStylesheet name="primeicons/primeicons.css"
+			library="primefaces" />
+		<h:outputStylesheet library="css" name="cadastrocliente.css" />
+	</f:facet>
+	<title>Cadastro</title>
+	<style type="text/css">
+</style>
+</h:head>
+
+<h:body>
+
+	<h:form class="box">
+		<img src="resources/layout/images/uniLibrary.png" class="center" />
+		<p:messages />
+		<div class="ui-g ui-fluid" style="width: 400px;">
+			<div class="ui-g-12" style="padding: 0;">
+				<div class="card card-w-title">
+					<p:panelGrid columns="1" styleClass="form-group ui-panelgrid-blank"
+						layout="grid">
+						<p:outputLabel value="Nome" />
+						<p:inputText value="#{clienteController.entity.nome}" required="true" requiredMessage="Informe seu nome">
+						</p:inputText>
+
+						<p:outputLabel value="CPF" />
+						<p:inputMask value="#{clienteController.entity.cpf}" mask="999.999.999-99" required="true"
+							requiredMessage="Informe seu CPF">
+						</p:inputMask>
+
+						<p:outputLabel value="E-mail" />
+						<p:inputText value="#{clienteController.entity.email}" required="true" requiredMessage="Informe seu e-mail">
+						</p:inputText>
+
+						<p:outputLabel value="Senha" />
+						<h:inputSecret value="#{clienteController.entity.senha}" required="true"
+							requiredMessage="Preencha o campo de senha">
+						</h:inputSecret>
+
+						<p:outputLabel value="Data de nascimento" />
+						<p:datePicker value="#{clienteController.entity.dataAniversario}" id="Data" required="true" style="width: auto;"
+							requiredMessage="Informe sua data de nascimento"
+							pattern="dd/MM/yyyy">
+						</p:datePicker>
+					</p:panelGrid>
+				</div>
+			</div>
+		</div>
+
+		<h:commandButton value="Finalizar cadastro" process="@form"
+							update="@form" action="#{clienteController.salvar}"  />
+	</h:form>
+
+</h:body>
+</html>

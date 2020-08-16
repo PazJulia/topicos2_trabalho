@@ -3,6 +3,7 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import model.validation.EditoraValidation;
 import model.validation.Validation;
 
 @Entity
@@ -24,7 +25,7 @@ public class Editora extends DefaultEntity<Editora> {
 	@Override
 	public Validation<Editora> getValidation() {
 		// TODO Auto-generated method stub
-		return null;
+		return new EditoraValidation();
 	}
 
 }

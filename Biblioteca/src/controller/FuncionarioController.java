@@ -4,15 +4,11 @@ import java.io.Serializable;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
 
 import org.primefaces.event.SelectEvent;
 
 import application.Util;
 import controller.listing.FuncionarioListing;
-import factory.JPAFactory;
 import model.Funcionario;
 import model.Telefone;
 import model.TipoFuncionario;
@@ -25,7 +21,7 @@ public class FuncionarioController extends Controller<Usuario> implements Serial
 	private static final long serialVersionUID = 5133323995601528105L;
 
 	private String filtro;
-	private Funcionario funcionario;
+//	private Funcionario funcionario;
 
 	public void abrirFuncionarioListing() {
 		FuncionarioListing listing = new FuncionarioListing();
@@ -54,28 +50,35 @@ public class FuncionarioController extends Controller<Usuario> implements Serial
 	public void setFiltro(String filtro) {
 		this.filtro = filtro;
 	}
-	
+
 	public TipoFuncionario[] getListaTipoFuncionario() {
 		return TipoFuncionario.values();
 	}
-	
+
 	@Override
 	public void salvar() {
-		EntityManager em = JPAFactory.getEntityManager();
-		Query query = em.createQuery("Select f " + "From Funcionario f " + "Where f.cpf = :cpf");
-		query.setParameter("cpf", getEntity().getCpf());
-		try {
-			funcionario = (Funcionario) query.getSingleResult();
+		getEntity().setSenha(Util.hashSHA256(getEntity().getSenha()));
+		super.salvar();
 
-		} catch (NoResultException e) {
-			funcionario = null;
-		}
-
-		if (funcionario == null) {
-			getEntity().setSenha(Util.hashSHA256(getEntity().getSenha()));
-			super.salvar();
-		} else
-			Util.addMessageError("CPF já cadastrado");
 	}
-	
+
+//	@Override
+//	public void salvar() {
+//		EntityManager em = JPAFactory.getEntityManager();
+//		Query query = em.createQuery("Select f " + "From Funcionario f " + "Where f.cpf = :cpf");
+//		query.setParameter("cpf", getEntity().getCpf());
+//		try {
+//			funcionario = (Funcionario) query.getSingleResult();
+//
+//		} catch (NoResultException e) {
+//			funcionario = null;
+//		}
+//
+//		if (funcionario == null) {
+//			getEntity().setSenha(Util.hashSHA256(getEntity().getSenha()));
+//			super.salvar();
+//		} else
+//			Util.addMessageError("CPF já cadastrado");
+//	}
+
 }

@@ -1,5 +1,6 @@
 package repository;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -24,7 +25,7 @@ public class AssinaturaRepository extends Repository<Assinatura> {
 
 		return query.getResultList();
 	}
-	
+
 	public boolean contains(Integer id, String nome) {
 		StringBuffer jpql = new StringBuffer();
 		jpql.append("SELECT ");
@@ -34,14 +35,14 @@ public class AssinaturaRepository extends Repository<Assinatura> {
 		jpql.append("WHERE ");
 		jpql.append("  upper(a.nome) = upper(?) ");
 		jpql.append("  AND a.id <> ? ");
-		
+
 		Query query = getEntityManager().createNativeQuery(jpql.toString());
 
 		query.setParameter(1, nome);
 		query.setParameter(2, id == null ? -1 : id);
-		
+
 		long resultado = (long) query.getSingleResult();
-		
+
 		return resultado == 0 ? false : true;
 	}
 

@@ -8,12 +8,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
+import model.validation.AssinaturaValidation;
 import model.validation.Validation;
 
 @Entity
 public class Assinatura extends DefaultEntity<Assinatura> {
 
-	private static final long serialVersionUID = -8635505795159660447L;
+	private static final long serialVersionUID = 8937249987380812921L;
 
 	@Column(nullable = false)
 	private String nome;
@@ -74,8 +75,7 @@ public class Assinatura extends DefaultEntity<Assinatura> {
 
 	@Override
 	public Validation<Assinatura> getValidation() {
-		// TODO Auto-generated method stub
-		return null;
+		return new AssinaturaValidation();
 	}
 
 }

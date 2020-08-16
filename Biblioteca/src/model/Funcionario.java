@@ -2,6 +2,9 @@ package model;
 
 import javax.persistence.Entity;
 
+import model.validation.FuncionarioValidation;
+import model.validation.Validation;
+
 @Entity
 public class Funcionario extends Usuario {
 
@@ -16,5 +19,11 @@ public class Funcionario extends Usuario {
 	public void setTipoFuncionario(TipoFuncionario tipoFuncionario) {
 		this.tipoFuncionario = tipoFuncionario;
 	}
+	
+	@Override
+	public Validation<Usuario> getValidation() {
+		return new FuncionarioValidation();
+	}
+	
 
 }
