@@ -119,9 +119,13 @@
 
 
 
+
+
 %
 {
 -webkit-transform
+
+
 
 
 
@@ -131,10 +135,16 @@
 
 
 
+
+
 rotate
 
 
+
+
 (
+
+
 
 
 
@@ -144,7 +154,11 @@ rotate
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -153,7 +167,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -161,7 +179,11 @@ transform
 rotate
 
 
+
+
 (
+
+
 
 
 
@@ -171,7 +193,11 @@ rotate
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -188,9 +214,13 @@ keyframes fa-spin { 0% {
 
 
 
+
+
 %
 {
 -webkit-transform
+
+
 
 
 
@@ -200,10 +230,16 @@ keyframes fa-spin { 0% {
 
 
 
+
+
 rotate
 
 
+
+
 (
+
+
 
 
 
@@ -213,7 +249,11 @@ rotate
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -222,7 +262,11 @@ transform
 
 
 
+
+
 :
+
+
 
 
 
@@ -230,7 +274,11 @@ transform
 rotate
 
 
+
+
 (
+
+
 
 
 
@@ -240,7 +288,11 @@ rotate
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -3632,10 +3684,11 @@ body .ui-panel .ui-panel-title {
 }
 
 body .ui-panel .ui-panel-titlebar {
-	border: 1px solid white;
+	/* 	border: 1px solid white;
+ */
 	background-color: white;
 	color: #515151;
-	padding: 0.571em 1em 0.571em 1em;
+	padding: 0;
 	font-weight: 700;
 	-moz-border-radius-topleft: 3px;
 	-webkit-border-top-left-radius: 3px;
@@ -6345,7 +6398,7 @@ body .ui-carousel .ui-carousel-header {
 	color: #333333;
 	padding: 0.571em 1em 0.571em 1em;
 	border: none;
-	margin: 0;
+	margin: 20px;
 	font-weight: 700;
 }
 
@@ -6411,6 +6464,7 @@ body .ui-carousel .ui-carousel-button.ui-carousel-next-button {
 
 body .ui-carousel .ui-carousel-button.ui-carousel-next-button:before {
 	content: "";
+	color: #f50e4f;
 }
 
 body .ui-carousel .ui-carousel-button.ui-carousel-prev-button {
@@ -6433,6 +6487,7 @@ body .ui-carousel .ui-carousel-button.ui-carousel-prev-button {
 
 body .ui-carousel .ui-carousel-button.ui-carousel-prev-button:before {
 	content: "";
+	color: #f50e4f;
 }
 
 body .ui-carousel .ui-carousel-button:not(.ui-state-disabled):hover {

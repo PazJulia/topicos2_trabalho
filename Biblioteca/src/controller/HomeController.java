@@ -5,6 +5,8 @@ import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.primefaces.event.SelectEvent;
+
 import model.Livro;
 import repository.LivroRepository;
 
@@ -15,6 +17,12 @@ public class HomeController extends Controller<Livro> {
 	private static final long serialVersionUID = 448739786884393045L;
 
 	private List<Livro> listaLivro;
+	
+	public void obterLivroListing(SelectEvent event) {
+		Livro entity = (Livro) event.getObject();
+		setEntity(entity);
+	}
+
 
 	@Override
 	public Livro getEntity() {

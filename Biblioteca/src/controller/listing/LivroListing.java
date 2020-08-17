@@ -21,6 +21,9 @@ public class LivroListing extends Listing<Livro> {
 	private List<Livro> list;
 	private String filtro;
 
+	private Livro livro;
+	private Integer id;
+
 	public LivroListing() {
 		super(Livro.class);
 	}
@@ -41,6 +44,11 @@ public class LivroListing extends Listing<Livro> {
 	public void pesquisar() {
 		LivroRepository repo = new LivroRepository();
 		setList(repo.findByNome(getFiltro()));
+	}
+
+	public void carregarLivro() {
+		LivroRepository repo = new LivroRepository();
+		setLivro(repo.findById(getId()));
 	}
 
 //	public List<Livro> getList(int num) {
@@ -68,5 +76,23 @@ public class LivroListing extends Listing<Livro> {
 	public void setFiltro(String filtro) {
 		this.filtro = filtro;
 	}
+
+	public Livro getLivro() {
+		return livro;
+	}
+
+	public void setLivro(Livro livro) {
+		this.livro = livro;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	
 
 }

@@ -17,31 +17,43 @@
 			<p:graphicImage name="/images/loader.gif" />
 		</p:dialog>
 
-		<div class="div-a">
+		<h:form>
+			<div class="div-a">
+				<p:graphicImage name="layout/images/uniLibrary.png"
+					style="left: 32px; position: absolute; top: 50%; transform: translate(0%, -50%);" />
 
-			<p:graphicImage name="layout/images/uniLibrary.png"
-				style="left: 32px; position: absolute; top: 50%; transform: translate(0%, -50%);" />
+				<!-- <h:link value="Entre ou cadastre-se" outcome="/logincliente"
+					style="	color: #515151;	right: 80px; position: absolute; top: 50%; transform: translate(-20%, -50%);" /> -->
 
-			<h:link value="Entre ou cadastre-se" outcome="/logincliente"
-				style="	color: #515151;
-	right: 80px;
-	position: absolute;
-	top: 50%;
-	transform: translate(-20%, -50%);" />
+				<p:growl id="messages" showDetail="true" />
+				<p:menuButton value="Entre ou cadastre-se"
+					style="	color: #515151;	right: 80px; position: absolute; top: 50%; transform: translate(-20%, -50%);">
+					<p:menuitem value="Minha conta" action="#{menuView.save}"
+						update="messages" icon="fa fa-fw fa-user" />
+					<p:menuitem value="Minha assinatura" action="#{menuView.update}"
+						update="messages" icon="fa fa-fw fa-th-list" />
+					<p:menuitem value="Meus livros" action="#{menuView.update}"
+						update="messages" icon="fa fa-fw fa-book" />
+					
+					<p:separator />
+					<p:menuitem value="Login ou cadastro" outcome="/logincliente"
+						style="background: #FFDF85;" />
+				</p:menuButton>
 
-			<p:commandButton icon="fa fa-fw fa-shopping-cart" value="0"
-				style="right: 32px; position: absolute; top: 50%; transform: translate(0%, -50%);"></p:commandButton>
+				<p:commandButton icon="fa fa-fw fa-shopping-cart" value="0"
+					style="right: 32px; position: absolute; top: 50%; transform: translate(0%, -50%);" />
 
+			</div>
+		</h:form>
 
-		</div>
 		<div class="div-b">
 			<p:inputText class="itSearch" placeholder="Pesquise um livro ..."
 				style="width: 350px; position: relative; top: 50%; transform: translate(0%, -50%); border-top-left-radius: 10px; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 10px; border: none;" />
 			<p:commandButton icon="fa fa-fw fa-search"
 				style="position: relative; top: 50%; transform: translate(0%, -50%); border-top-left-radius: 0; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 0; border: none;" />
-			<p:commandLink value="Início"
+			<p:link value="Início" outcome="/home"
 				style="color: #515151; right: 160px; position: absolute; top: 50%; transform: translate(0%, -50%);" />
-			<p:commandLink value="Assinaturas"
+			<p:link value="Assinaturas"
 				style="color: #515151; right: 0; position: absolute; top: 50%; transform: translate(-50%, -50%);" />
 		</div>
 

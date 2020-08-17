@@ -5,7 +5,7 @@
 	version="4.0">
 	<display-name>Biblioteca</display-name>
 	<welcome-file-list>
-		<welcome-file>faces/loginfuncionario.xhtml</welcome-file>
+		<welcome-file>faces/home.xhtml</welcome-file>
 	</welcome-file-list>
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>

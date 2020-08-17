@@ -11,12 +11,12 @@
 <h:body>
 	<h:form class="box">
 		<img src="resources/layout/images/uniLibrary.png" class="center" />
-		<h:messages style="color:red" />
+		<p:messages style="color:red" />
 
-		<p:inputMask mask="999.999.999-99" required="true"
+		<p:inputText required="true"
 			requiredMessage="Preencha o campo de e-mail">
-			<f:passThroughAttribute name="placeholder" value="CPF" />
-		</p:inputMask>
+			<f:passThroughAttribute name="placeholder" value="E-mail" />
+		</p:inputText>
 
 		<h:inputSecret required="true"
 			requiredMessage="Preencha o campo de senha">
@@ -25,7 +25,7 @@
 
 		<h:outputLabel value="Novo por aqui?" style="size: 20px;" />
 		<br />
-		<h:link value="Cadastre-se " outcome="cadastrocliente" process="@this" update="@none"
+		<h:link value="Cadastre-se " outcome="/cadastrocliente" process="@this" update="@none"
 			style="text-decoration: underline;">
 		</h:link>
 

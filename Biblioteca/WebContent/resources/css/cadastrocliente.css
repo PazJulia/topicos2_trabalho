@@ -25,7 +25,7 @@ body {
 	transform: translate(-50%, -50%);
 	background: white;
 	text-align: left;
-	border: 1px solid #F50E4F;
+	border: none;
 }
 
 .box input[type="text"], .box input[type="password"] {
