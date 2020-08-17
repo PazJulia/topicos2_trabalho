@@ -23,19 +23,26 @@ public class TemplateClienteController implements Serializable {
 
 	private List<Livro> list;
 	private String filtro;
-	private String valueMenu = "Entre ou cadastre-se";
+	private String valueMenu;
+	private String conta;
+	private String assinatura;
+	private String livros;
+	private String buttonLogin;
 
-	public Cliente getUsuarioLogado() {
+	public Cliente getclienteLogado() {
 		if (clienteLogado == null) // buscando o cliente da sessao
-			clienteLogado = (Cliente) Session.getInstance().getAttribute("clienteLogado");
+			clienteLogado = (Cliente) Session.getInstance().getAttribute("usuarioLogado");
 		return clienteLogado;
 	}
 
-	public String getValue() {
-		if (clienteLogado == null) // buscando o cliente da sessao
-			clienteLogado = (Cliente) Session.getInstance().getAttribute("clienteLogado");
-		valueMenu = "Olá" + clienteLogado;
-		return valueMenu;
+	public String getValueMenu() {
+		if (getclienteLogado() == null) // buscando o cliente da sessao
+		{
+			setButtonLogin("Login ou cadastro");
+			return "Entre ou cadastre-se";
+		}
+		setButtonLogin("Sair");
+		return getclienteLogado().getNome();
 	}
 
 	public void encerrarSessao() {
@@ -66,6 +73,46 @@ public class TemplateClienteController implements Serializable {
 
 	public void setFiltro(String filtro) {
 		this.filtro = filtro;
+	}
+
+	public Cliente getClienteLogado() {
+		return clienteLogado;
+	}
+
+	public void setClienteLogado(Cliente clienteLogado) {
+		this.clienteLogado = clienteLogado;
+	}
+
+	public String getConta() {
+		return conta;
+	}
+
+	public void setConta(String conta) {
+		this.conta = conta;
+	}
+
+	public String getAssinatura() {
+		return assinatura;
+	}
+
+	public void setAssinatura(String assinatura) {
+		this.assinatura = assinatura;
+	}
+
+	public String getLivros() {
+		return livros;
+	}
+
+	public void setLivros(String livros) {
+		this.livros = livros;
+	}
+
+	public String getButtonLogin() {
+		return buttonLogin;
+	}
+
+	public void setButtonLogin(String buttonLogin) {
+		this.buttonLogin = buttonLogin;
 	}
 
 }

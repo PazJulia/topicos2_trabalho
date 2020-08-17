@@ -23,7 +23,7 @@ public class LoginClienteController {
 //        System.out.println(senha);
 
 		EntityManager em = JPAFactory.getEntityManager();
-		Query query = em.createQuery("Select c " + "From Cliente c " + "Where c.email = :email AND f.senha = :senha");
+		Query query = em.createQuery("Select c " + "From Cliente c " + "Where c.email = :email AND c.senha = :senha");
 		query.setParameter("senha", senha);
 		query.setParameter("email", getCliente().getEmail());
 		try {
@@ -34,13 +34,13 @@ public class LoginClienteController {
 		}
 
 		if (cliente != null) {
-			// adicionando um ussuario na sessao
-			Session.getInstance().setAttribute("clienteLogado", cliente);
+			// adicionando um cliente na sessao
+			Session.getInstance().setAttribute("usuarioLogado", cliente);
 			// redirecionando para o template
 			System.out.println(
 					"--------------------------------------- ENTROU ------------------------------------------");
 			System.out.println(getCliente().getNome());
-			return "pages/home.xhtml?faces-redirect=true";
+			return "home.xhtml?faces-redirect=true";
 		}
 		Util.addMessageError("Login ou Senha inválido.");
 		return "";

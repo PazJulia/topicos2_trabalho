@@ -13,23 +13,24 @@
 		<img src="resources/layout/images/uniLibrary.png" class="center" />
 		<p:messages style="color:red" />
 
-		<p:inputText required="true"
+		<p:inputText value="#{loginClienteController.cliente.email}" required="true"
 			requiredMessage="Preencha o campo de e-mail">
 			<f:passThroughAttribute name="placeholder" value="E-mail" />
 		</p:inputText>
 
-		<h:inputSecret required="true"
+		<h:inputSecret  value="#{loginClienteController.cliente.senha}" required="true"
 			requiredMessage="Preencha o campo de senha">
 			<f:passThroughAttribute name="placeholder" value="Senha" />
 		</h:inputSecret>
 
 		<h:outputLabel value="Novo por aqui?" style="size: 20px;" />
 		<br />
-		<h:link value="Cadastre-se " outcome="/cadastrocliente" process="@this" update="@none"
-			style="text-decoration: underline;">
+		<h:link value="Cadastre-se " outcome="/cadastrocliente"
+			process="@this" update="@none" style="text-decoration: underline;">
 		</h:link>
 
-		<h:commandButton value="Login" />
+		<h:commandButton value="Login"
+			action="#{loginClienteController.entrar}" />
 	</h:form>
 </h:body>
 </html>

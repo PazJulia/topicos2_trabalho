@@ -26,7 +26,7 @@
 					style="	color: #515151;	right: 80px; position: absolute; top: 50%; transform: translate(-20%, -50%);" /> -->
 
 				<p:growl id="messages" showDetail="true" />
-				<p:menuButton value="Entre ou cadastre-se"
+				<p:menuButton value="#{templateClienteController.valueMenu}"
 					style="	color: #515151;	right: 80px; position: absolute; top: 50%; transform: translate(-20%, -50%);">
 					<p:menuitem value="Minha conta" action="#{menuView.save}"
 						update="messages" icon="fa fa-fw fa-user" />
@@ -34,9 +34,9 @@
 						update="messages" icon="fa fa-fw fa-th-list" />
 					<p:menuitem value="Meus livros" action="#{menuView.update}"
 						update="messages" icon="fa fa-fw fa-book" />
-					
+
 					<p:separator />
-					<p:menuitem value="Login ou cadastro" outcome="/logincliente"
+					<p:menuitem value="#{templateClienteController.buttonLogin}" outcome="/logincliente"
 						style="background: #FFDF85;" />
 				</p:menuButton>
 
