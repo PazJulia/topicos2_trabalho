@@ -1,14 +1,11 @@
 package controller.listing;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import controller.listing.Listing;
 import model.Livro;
 import repository.LivroRepository;
 

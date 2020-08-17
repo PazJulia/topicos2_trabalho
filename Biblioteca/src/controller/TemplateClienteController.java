@@ -24,9 +24,9 @@ public class TemplateClienteController implements Serializable {
 	private List<Livro> list;
 	private String filtro;
 	private String valueMenu;
-	private String conta;
-	private String assinatura;
-	private String livros;
+//	private String conta;
+//	private String assinatura;
+//	private String livros;
 	private String buttonLogin;
 
 	public Cliente getclienteLogado() {
@@ -83,29 +83,29 @@ public class TemplateClienteController implements Serializable {
 		this.clienteLogado = clienteLogado;
 	}
 
-	public String getConta() {
-		return conta;
-	}
-
-	public void setConta(String conta) {
-		this.conta = conta;
-	}
-
-	public String getAssinatura() {
-		return assinatura;
-	}
-
-	public void setAssinatura(String assinatura) {
-		this.assinatura = assinatura;
-	}
-
-	public String getLivros() {
-		return livros;
-	}
-
-	public void setLivros(String livros) {
-		this.livros = livros;
-	}
+//	public String getConta() {
+//		return conta;
+//	}
+//
+//	public void setConta(String conta) {
+//		this.conta = conta;
+//	}
+//
+//	public String getAssinatura() {
+//		return assinatura;
+//	}
+//
+//	public void setAssinatura(String assinatura) {
+//		this.assinatura = assinatura;
+//	}
+//
+//	public String getLivros() {
+//		return livros;
+//	}
+//
+//	public void setLivros(String livros) {
+//		this.livros = livros;
+//	}
 
 	public String getButtonLogin() {
 		return buttonLogin;

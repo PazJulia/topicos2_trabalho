@@ -1,6 +1,5 @@
 package repository;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.Query;

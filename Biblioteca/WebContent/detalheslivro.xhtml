@@ -27,25 +27,29 @@
 			<p:panel id="panel">
 
 				<div align="center">
-					<p:panel id="basic" footer="Movie Details"
-						style="margin-bottom:20px">
+					<p:panel id="basic" style="margin-bottom:20px">
 						<h:panelGrid columns="3" cellpadding="10">
 							<p:graphicImage name="layout/images/livrosemimagem.png" />
 							<p:panelGrid columns="1"
 								styleClass="form-group ui-panelgrid-blank" layout="grid">
-								<H4>Título: #{livrolisting.livro.nome}</H4>
-								<div></div>
+								<h:outputLabel value="#{detalhesLivroController.livro.nome}"
+									style="font-weight: bold; font-size: 20px;" />
 								<h:outputText
-									value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
-                His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
-                Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,
-                but given to ruthless violence whenever anything stands against the good of the family." />
+									value="Data de Lançamento: #{detalhesLivroController.livro.dataLancamento}"
+									style="font-weight: bold;">
+									<f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3" />
+								</h:outputText>
+
+
+								<h:outputText value="#{detalhesLivroController.livro.descricao}" />
+
 							</p:panelGrid>
 							<p:panelGrid columns="1"
 								styleClass="form-group ui-panelgrid-blank" layout="grid">
-								<div
-									style="height: 45px; background-color: #FFF3F7; border: 1px solid #F50E4F; width: 150px; text-align: center;">
-									<H4 style="margin: 10px;">Preço:</H4>
+								<div class="container text-center"
+									style="height: 45px; background-color: #FFF3F7; border: 1px solid #F50E4F; width: 150px;">
+									<h:outputLabel
+										value="Preço: R$ #{detalhesLivroController.livro.preco}" />
 								</div>
 
 								<p:commandButton value="Adicionar ao Carrinho"
@@ -59,8 +63,7 @@
 					<p:carousel value="#{homeController.listaLivro}"
 						headerText="Destaques" var="entity"
 						style="margin-top: 20px; border: none; font-size: 17px; text-align: left"
-						itemStyle="text-align:center; padding: 15px; border: none; border-radius: 0; background-color: #FFF3F7; margin:30px; margin-top: 10px;
-							;align-items: center;"
+						itemStyle="text-align:center; padding: 15px; border: none; border-radius: 0; background-color: #FFF3F7; margin:30px; margin-top: 10px; align-items: center;"
 						responsive="true">
 						<p:outputPanel style="text-align:center;">
 							<p:graphicImage name="layout/images/livrosemimagem.png"
@@ -73,8 +76,10 @@
 								style="color: #515151;" />
 							<h:outputText value="R$ #{entity.preco}"
 								style="font-size: 20px; font-weight: lighter; color: #515151;" />
-							<p:commandButton value="Visualizar"
-								style="border: none; background-color: #FFDF85; color: #515151;"></p:commandButton>
+							<h:commandButton value="Visualizar"
+								action="#{homeController.detalhesLivro(entity)}"
+								style="border-radius: 10px; border: none; background-color: #FFDF85; color: #515151; height: 40px; width: 80px;">
+							</h:commandButton>
 
 						</p:panelGrid>
 					</p:carousel>
@@ -89,10 +94,7 @@
 				<p:commandButton value="Não" type="button"
 					styleClass="ui-confirmdialog-no" />
 			</p:confirmDialog>
-
-
  -->
 		</h:form>
 	</ui:define>
 </ui:composition>
-

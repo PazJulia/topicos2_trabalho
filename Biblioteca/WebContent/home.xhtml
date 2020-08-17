@@ -25,7 +25,13 @@
 				<f:facet name="header">
 					<div align="center">
 						<div
-							style="background-image: url('resources/layout/images/background.png'); width: 100%; height: 300px;" />
+							style="background-image: url('resources/layout/images/background.png'); width: 100%; height: 300px;">
+							<H1
+								style="margin: 0; color: black; text-align: left; top: 150px; position: relative; font-size: 70px; font-weight: lighter; margin-left: 50px;">
+								UniLibrary <SMALL style="font-size: 30px; display: block;">Sua
+									biblioteca online</SMALL>
+							</H1>
+						</div>
 
 						<p:carousel value="#{homeController.listaLivro}"
 							headerText="Destaques" var="entity"
@@ -43,10 +49,10 @@
 									style="color: #515151;" />
 								<h:outputText value="R$ #{entity.preco}"
 									style="font-size: 20px; font-weight: lighter; color: #515151;" />
-								<p:button value="Visualizar"
-									outcome="/navegacaolivro.xhtml?faces-redirect=true&amp;id=#{entity.id}"
-									process="@this" update="@form" resetValues="true"
-									style="border: none; background-color: #FFDF85; color: #515151"></p:button>
+								<h:commandButton value="Visualizar"
+									action="#{homeController.detalhesLivro(entity)}"
+									style="border-radius: 10px; border: none; background-color: #FFDF85; color: #515151; height: 40px; width: 80px;">
+								</h:commandButton>
 
 							</p:panelGrid>
 						</p:carousel>

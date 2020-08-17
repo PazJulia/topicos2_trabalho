@@ -1,68 +1,38 @@
 package controller;
 
+import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 import javax.inject.Named;
-
-import org.primefaces.event.SelectEvent;
 
 import model.Livro;
 import repository.LivroRepository;
 
 @Named
-@ViewScoped
-public class HomeController extends Controller<Livro> {
+@RequestScoped
+public class HomeController implements Serializable{
 
-	private static final long serialVersionUID = 448739786884393045L;
-
+	private static final long serialVersionUID = 6634652502903367505L;
 	private List<Livro> listaLivro;
-	
-	public void obterLivroListing(SelectEvent event) {
-		Livro entity = (Livro) event.getObject();
-		setEntity(entity);
-	}
 
-
-	@Override
-	public Livro getEntity() {
-		if (entity == null) {
-			entity = new Livro();
-		}
-		return entity;
-	}
 
 	public List<Livro> getListaLivro() {
 		if (listaLivro == null) {
 			LivroRepository repo = new LivroRepository();
-			listaLivro = repo.findLastResults(10);
+			listaLivro = repo.findLastResults(15);
 		}
 		return listaLivro;
 	}
+	
+	public String detalhesLivro(Livro livro) {
+		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+		flash.put("livroFlash", livro);
+		
+		return "detalheslivro.xhtml?faces-redirect=true";
+//		Util.redirect("/detalheslivro.xhtml");
+	}
 
 }
-
-/*
- * package controller;
- * 
- * import java.util.List;
- * 
- * import javax.faces.view.ViewScoped; import javax.inject.Named;
- * 
- * import model.Livro; import repository.LivroRepository;
- * 
- * @Named
- * 
- * @ViewScoped public class HomeController extends Controller<Livro> {
- * 
- * private static final long serialVersionUID = -2627567552257005986L;
- * 
- * private List<Livro> listaLivro;
- * 
- * public List<Livro> getlistaLivro() { if (listaLivro == null) {
- * LivroRepository repo = new LivroRepository(); listaLivro =
- * repo.findLastResults(10); } return listaLivro; }
- * 
- * @Override public Livro getEntity() { if (entity == null) { entity = new
- * Livro(); } return entity; } }
- */
