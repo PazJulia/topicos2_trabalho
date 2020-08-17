@@ -45,10 +45,14 @@ public class TemplateClienteController implements Serializable {
 		return getclienteLogado().getNome();
 	}
 
-	public void encerrarSessao() {
+	public String buttonAction() {
+		if(getClienteLogado() == null) {
+			return "logincliente.xhtml?faces-redirect=true";
+		}
 		// encerrando a sessao
 		Session.getInstance().invalidateSession();
-		Util.redirect("/faces/home.xhtml");
+		return "home.xhtml?faces-redirect=true";
+
 		// return "login.xhtml?faces-redirect=true";
 	}
 
@@ -82,30 +86,6 @@ public class TemplateClienteController implements Serializable {
 	public void setClienteLogado(Cliente clienteLogado) {
 		this.clienteLogado = clienteLogado;
 	}
-
-//	public String getConta() {
-//		return conta;
-//	}
-//
-//	public void setConta(String conta) {
-//		this.conta = conta;
-//	}
-//
-//	public String getAssinatura() {
-//		return assinatura;
-//	}
-//
-//	public void setAssinatura(String assinatura) {
-//		this.assinatura = assinatura;
-//	}
-//
-//	public String getLivros() {
-//		return livros;
-//	}
-//
-//	public void setLivros(String livros) {
-//		this.livros = livros;
-//	}
 
 	public String getButtonLogin() {
 		return buttonLogin;

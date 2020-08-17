@@ -45,6 +45,11 @@
 					<div align="center">
 						<h1>Cadastro de Livro</h1>
 					</div>
+					<div align="right" style="float: right; position: relative;">
+						<img class="img-responsive"
+							style="max-width: 80px !important; max-height: 80px !important;"
+							src="/Biblioteca/faces/img-livro?nome=#{livroController.entity.id}.png" />
+					</div>
 				</f:facet>
 				<div class="ui-g ui-fluid">
 					<div class="ui-g-12">
@@ -70,7 +75,8 @@
 									maxlength="1024" />
 
 								<p:outputLabel value="Preço:" />
-								<p:inputText value="#{livroController.entity.preco}" type="number" required="true" requiredMessage="Informe o preço"/>
+								<p:inputText value="#{livroController.entity.preco}"
+									type="number" required="true" requiredMessage="Informe o preço" />
 
 								<p:outputLabel value="Data de lançamento:" />
 								<p:datePicker value="#{livroController.entity.dataLancamento}"
@@ -107,6 +113,15 @@
 									<f:selectItems value="#{livroController.listaAutor}"
 										var="autor" itemLabel="#{autor.nome}" itemValue="#{autor}" />
 								</p:selectCheckboxMenu>
+
+								<h:form enctype="multipart/form-data">
+									<p:fileUpload listener="#{livroController.upload}"
+										label="#{livroController.nomeFoto}" mode="advanced"
+										update="@this messages" auto="false" sizeLimit="300000"
+										allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+									<p:growl id="messages" showDetail="true" />
+								</h:form>
 
 
 

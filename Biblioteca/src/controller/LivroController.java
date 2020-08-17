@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -7,9 +9,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
+import org.primefaces.model.file.UploadedFile;
 
+import application.Util;
 import controller.listing.LivroListing;
 import model.Autor;
 import model.Editora;
@@ -27,35 +32,73 @@ public class LivroController extends Controller<Livro> {
 	private List<Editora> listaEditora;
 
 	private List<Autor> listaAutor;
-	/*
-	 * private InputStream fotoInputStream = null; private String nomeFoto = null;
-	 * 
-	 * public void upload(FileUploadEvent event) {
-	 * 
-	 * UploadedFile uploadFile = event.getFile();
-	 * System.out.println("nome arquivo: " + uploadFile.getFileName());
-	 * System.out.println("tipo: " + uploadFile.getContentType());
-	 * System.out.println("tamanho: " + uploadFile.getSize());
-	 * 
-	 * if (uploadFile.getContentType().equals("image/png")) { try { fotoInputStream
-	 * = uploadFile.getInputStream(); nomeFoto = uploadFile.getFileName();
-	 * System.out.println("inputStream: " + uploadFile.getInputStream().toString());
-	 * } catch (IOException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); } Util.addMessageInfo("Upload realizado com sucesso.");
-	 * } else { Util.addMessageError("O tipo da image deve ser png."); }
-	 * 
-	 * }
-	 * 
-	 * public String getNomeFoto() { if (nomeFoto == null) return
-	 * "Selecione uma foto ..."; return "Arquivo: " + nomeFoto +
-	 * " (Clique para alterar a foto...)"; }
-	 */
 
-	/*
-	 * @Override public void salvar() { if (getEntity().getEditora() != null &&
-	 * getEntity().getEditora().getId() == null) getEntity().setEditora(null);
-	 * super.salvar(); }
-	 */
+	private InputStream fotoInputStream = null;
+	private String nomeFoto = null;
+
+	public void upload(FileUploadEvent event) {
+
+		UploadedFile uploadFile = event.getFile();
+		System.out.println("nome arquivo: " + uploadFile.getFileName());
+		System.out.println("tipo: " + uploadFile.getContentType());
+		System.out.println("tamanho: " + uploadFile.getSize());
+
+		if (uploadFile.getContentType().equals("image/png")) {
+			try {
+				fotoInputStream = uploadFile.getInputStream();
+				nomeFoto = uploadFile.getFileName();
+				System.out.println("inputStream: " + uploadFile.getInputStream().toString());
+			} catch (IOException e) { // TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Util.addMessageInfo("Upload realizado com sucesso.");
+		} else {
+			Util.addMessageError("O tipo da image deve ser png.");
+		}
+
+	}
+
+	public String getNomeFoto() {
+		if (nomeFoto == null)
+			return "Selecione uma foto ...";
+		return "Arquivo: " + nomeFoto + " (Clique para alterar a foto...)";
+	}
+
+	@Override
+	public void limpar() {
+		// TODO Auto-generated method stub
+		super.limpar();
+		fotoInputStream = null;
+		nomeFoto = null;
+	}
+
+	@Override
+	public void salvar() {
+//		if (getEntity().getEditora() != null && getEntity().getEditora().getId() == null)
+//			getEntity().setEditora(null);
+//		super.salvar();
+		// salvando no banco de dados
+		if (salvarEspecial()) {
+			// caso nao tenha selecionado a imagem sair do metodo
+			if (fotoInputStream == null) {
+				limpar();
+				Util.addMessageInfo("Cadastro realizado com sucesso");
+				return;
+			}
+			// salvar a foto do professor
+			if (Util.saveImageLivro(fotoInputStream, "png", getEntity().getId())) {
+				limpar();
+				Util.addMessageInfo("Cadastro realizado com sucesso");
+				return;
+			} else {
+				limpar();
+				Util.addMessageWarn("O Cadastro foi realizado com sucesso, porem a foto nao foi salva.");
+				return;
+			}
+		}
+		Util.addMessageError("Erro ao efetuar o cadastro de livro.");
+
+	}
 
 	public void abrirLivroListing() {
 		LivroListing listing = new LivroListing();

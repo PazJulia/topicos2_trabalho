@@ -3,16 +3,16 @@ package controller;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import model.Livro;
 import repository.LivroRepository;
 
 @Named
-@RequestScoped
+@ViewScoped
 public class HomeController implements Serializable{
 
 	private static final long serialVersionUID = 6634652502903367505L;

@@ -29,17 +29,12 @@
 				<div align="center">
 					<p:panel id="basic" style="margin-bottom:20px">
 						<h:panelGrid columns="3" cellpadding="10">
-							<p:graphicImage name="layout/images/livrosemimagem.png" />
+							<img style="max-height: 250px" class="img-responsive"
+								src="/Biblioteca/faces/img-livro?nome=#{livroController.entity.id=detalhesLivroController.livro.id}.png" />
 							<p:panelGrid columns="1"
 								styleClass="form-group ui-panelgrid-blank" layout="grid">
 								<h:outputLabel value="#{detalhesLivroController.livro.nome}"
 									style="font-weight: bold; font-size: 20px;" />
-								<h:outputText
-									value="Data de Lançamento: #{detalhesLivroController.livro.dataLancamento}"
-									style="font-weight: bold;">
-									<f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3" />
-								</h:outputText>
-
 
 								<h:outputText value="#{detalhesLivroController.livro.descricao}" />
 
@@ -66,8 +61,8 @@
 						itemStyle="text-align:center; padding: 15px; border: none; border-radius: 0; background-color: #FFF3F7; margin:30px; margin-top: 10px; align-items: center;"
 						responsive="true">
 						<p:outputPanel style="text-align:center;">
-							<p:graphicImage name="layout/images/livrosemimagem.png"
-								style="width: 35%;" />
+							<img style="max-height: 250px" class="img-responsive"
+								src="/Biblioteca/faces/img-livro?nome=#{livroController.entity.id=entity.id}.png" />
 						</p:outputPanel>
 
 						<p:panelGrid columns="1" style="width:100%"
