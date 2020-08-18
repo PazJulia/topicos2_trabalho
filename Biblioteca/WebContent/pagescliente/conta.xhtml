@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templatecliente.xhtml">
+
+	<ui:define name="head">
+		<style type="text/css"></style>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<p:ajaxStatus onstart="PF('statusDialog').show()"
+			onsuccess="PF('statusDialog').hide()" />
+
+		<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+			closable="false" resizable="false" showHeader="false">
+			<p:graphicImage name="/images/loader.gif" />
+		</p:dialog>
+
+		<h:form>
+			<p:growl id="growl" globalOnly="false" />
+			<p:panel id="panel">
+				<f:facet name="header">
+					<div align="center"
+						style="margin-left: 30px; margin-right: 30px; margin-top: 30px;">
+						<h1>Meus dados</h1>
+					</div>
+
+					<div align="center">
+						<h:panelGrid columns="2">
+							<p:panelGrid columns="1"
+								styleClass="form-group ui-panelgrid-blank" layout="grid">
+								<p:outputLabel value="Nome:" />
+								<p:inputText id="itNome" value="#{contaController.entity.nome}"
+									required="true" requiredMessage="Informe o nome." />
+
+								<p:outputLabel value="CPF:" />
+								<p:inputMask id="itCpf" value="#{contaController.entity.cpf}"
+									mask="999.999.999-99" />
+
+								<p:outputLabel value="Senha:" />
+								<p:password value="#{contaController.entity.senha}" />
+
+								<p:outputLabel value="Data de Aniversário:" />
+								<p:datePicker value="#{contaController.entity.dataAniversario}"
+									pattern="dd/MM/yyyy" showIcon="true" style="width:auto;" />
+
+								<p:outputLabel value="E-mail:" />
+								<p:inputText value="#{contaController.entity.email}" />
+
+								<p:outputLabel value="Telefone (DDD):" />
+								<p:inputMask id="itDdd"
+									value="#{contaController.entity.telefone.ddd}" mask="99" />
+
+								<p:outputLabel value="Telefone (Número):" />
+								<p:inputMask id="itNumero"
+									value="#{contaController.entity.telefone.numero}"
+									mask="99999-9999" />
+
+							</p:panelGrid>
+							<p:panelGrid columns="1"
+								styleClass="form-group ui-panelgrid-blank" layout="grid">
+								<p:outputLabel value="Nome do Portador:" />
+								<p:inputText value="#{contaController.entity.nomePortador}" />
+
+								<p:outputLabel value="Número do cartão:" />
+								<p:inputText value="#{contaController.entity.numero}" />
+
+								<p:outputLabel value="Data de validade:" />
+								<p:inputMask value="#{contaController.entity.dataValidade}"
+									mask="99/99" />
+
+								<p:outputLabel value="Código de Segurança:" />
+								<p:inputText value="#{contaController.entity.codigoSeguranca}" />
+							</p:panelGrid>
+						</h:panelGrid>
+						<p:toolbar style="margin-left: 30px; margin-right: 30px; ">
+							<f:facet name="left">
+								<p:commandButton action="#{clienteController.salvar}"
+									value="Salvar" icon="pi pi-check" process="@form"
+									update="@form" />
+
+								<p:commandButton value="Limpar" process="@this" update="panel"
+									action="#{clienteController.limpar}">
+									<p:ajax update="@form" resetValues="true" />
+								</p:commandButton>
+
+							</f:facet>
+
+						</p:toolbar>
+					</div>
+				</f:facet>
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

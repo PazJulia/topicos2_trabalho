@@ -28,15 +28,16 @@
 				<p:growl id="messages" showDetail="true" />
 				<p:menuButton value="#{templateClienteController.valueMenu}"
 					style="	color: #515151;	right: 80px; position: absolute; top: 50%; transform: translate(-20%, -50%);">
-					<p:menuitem value="Minha conta" action="#{menuView.save}"
-						update="messages" icon="fa fa-fw fa-user" />
-					<p:menuitem value="Minha assinatura" action="#{menuView.update}"
-						update="messages" icon="fa fa-fw fa-th-list" />
+					<p:menuitem value="Minha conta" outcome="/pagescliente/conta" update="messages"
+						icon="fa fa-fw fa-user" />
+					<p:menuitem value="Minha assinatura" update="messages"
+						icon="fa fa-fw fa-th-list" />
 					<p:menuitem value="Meus livros" action="#{menuView.update}"
 						update="messages" icon="fa fa-fw fa-book" />
 
 					<p:separator />
-					<p:menuitem value="#{templateClienteController.buttonLogin}" action="#{templateClienteController.buttonAction}"
+					<p:menuitem value="#{templateClienteController.buttonLogin}"
+						action="#{templateClienteController.buttonAction}"
 						style="background: #ff797f; font-weight: bold; " />
 				</p:menuButton>
 
@@ -47,11 +48,11 @@
 		</h:form>
 
 		<div class="div-b">
-			<p:inputText class="itSearch" placeholder="Pesquise um livro ..."
-				style="width: 350px; position: relative; top: 50%; transform: translate(0%, -50%); border-top-left-radius: 10px; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 10px; border: none;" />
-			<p:commandButton icon="fa fa-fw fa-search"
-				style="position: relative; top: 50%; transform: translate(0%, -50%); border-top-left-radius: 0; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 0; border: none;" />
+
+
 			<p:link value="Início" outcome="/home"
+				style="color: #515151; right: 230px; position: absolute; top: 50%; transform: translate(0%, -50%);" />
+			<p:link value="Livros" outcome="/livrolistingcliente"
 				style="color: #515151; right: 160px; position: absolute; top: 50%; transform: translate(0%, -50%);" />
 			<p:link value="Assinaturas"
 				style="color: #515151; right: 0; position: absolute; top: 50%; transform: translate(-50%, -50%);" />
@@ -59,3 +60,10 @@
 
 	</h:body>
 </ui:composition>
+
+<!-- 			<p:inputText class="itSearch" placeholder="Pesquise um livro ..."
+				value="#{templateClienteController.filtro}"
+				style="width: 350px; position: relative; top: 50%; transform: translate(0%, -50%); border-top-left-radius: 10px; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 10px; border: none;" />
+			<p:commandButton action="#{templateClienteController.pesquisar}"
+				icon="fa fa-fw fa-search"
+				style="position: relative; top: 50%; transform: translate(0%, -50%); border-top-left-radius: 0; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 0; border: none;" /> -->

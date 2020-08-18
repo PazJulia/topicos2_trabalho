@@ -35,7 +35,7 @@ public class LoginClienteController {
 
 		if (cliente != null) {
 			// adicionando um cliente na sessao
-			Session.getInstance().setAttribute("usuarioLogado", cliente);
+			Session.getInstance().setAttribute("clienteLogado", cliente);
 			// redirecionando para o template
 			System.out.println(
 					"--------------------------------------- ENTROU ------------------------------------------");

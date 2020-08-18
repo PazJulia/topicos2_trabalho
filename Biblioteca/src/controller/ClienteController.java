@@ -16,18 +16,6 @@ public class ClienteController extends Controller<Usuario> implements Serializab
 
 	private static final long serialVersionUID = -8195453313820302773L;
 	private String filtro;
-//	private Cliente cliente;
-
-//	public void abrirClienteListing() {
-//		ClienteListing listing = new ClienteListing();
-//		listing.open();
-//	}
-//
-//	public void obterClienteListing(SelectEvent event) {
-//		Cliente entity = (Cliente) event.getObject();
-//		setEntity(entity);
-//
-//	}
 
 	@Override
 	public Cliente getEntity() {

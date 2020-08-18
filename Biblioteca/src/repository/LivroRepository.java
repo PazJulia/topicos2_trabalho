@@ -23,6 +23,16 @@ public class LivroRepository extends Repository<Livro> {
 
 		return query.getResultList();
 	}
+	
+//	public List<Livro> getAllResults(){
+//		StringBuffer jpql = new StringBuffer();
+//		jpql.append("SELECT * FROM Livro l");
+//		
+//		Query query = getEntityManager().createQuery(jpql.toString());
+//
+//		return query.getResultList();
+//		
+//	}
 
 	public List<Livro> findLastResults(int num) {
 

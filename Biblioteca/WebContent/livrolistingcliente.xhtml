@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templatecliente.xhtml">
+
+	<ui:define name="head">
+		<style type="text/css"></style>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<p:ajaxStatus onstart="PF('statusDialog').show()"
+			onsuccess="PF('statusDialog').hide()" />
+
+		<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+			closable="false" resizable="false" showHeader="false">
+			<p:graphicImage name="/images/loader.gif" />
+		</p:dialog>
+
+		<h:form>
+			<p:growl id="growl" globalOnly="false" />
+			<p:panel id="panel">
+				<f:facet name="header">
+					<div align="center">
+						<p:dataGrid var="entity"
+							value="#{livroListingClienteController.list}" columns="3"
+							layout="grid" rows="12" paginator="true" id="livros"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+
+
+							<p:panel style="text-align:center">
+								<h:panelGrid columns="1" style="width:100%">
+									<img style="max-height: 100px" class="img-responsive"
+										src="/Biblioteca/faces/img-livro?nome=#{livroController.entity.id=entity.id}.png" />
+									<h:outputText value="Título: #{entity.nome}" />
+									<h:outputText value="R$ #{entity.preco}"
+										style="font-weight: lighter;" />
+
+									<p:commandLink
+										action="#{livroListingClienteController.detalhesLivro(entity)}">
+										<h:outputText styleClass="pi pi-search" style="margin:0 auto;" />
+									</p:commandLink>
+								</h:panelGrid>
+							</p:panel>
+
+						</p:dataGrid>
+					</div>
+				</f:facet>
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
